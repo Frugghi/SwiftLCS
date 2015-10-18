@@ -5,6 +5,20 @@ The **longest common subsequence** (LCS) problem is the problem of finding the l
 
 The project is based on the Objective-C implementation of [NSArray+LongestCommonSubsequence](https://github.com/khanlou/NSArray-LongestCommonSubsequence).
 
+## Installation
+
+### CocoaPods
+[CocoaPods](https://cocoapods.org) is the dependency manager for Swift and Objective-C Cocoa projects. It has over ten thousand libraries and can help you scale your projects elegantly.
+```Ruby
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'SwiftLCS'
+```
+
+### Manual
+Include `SwiftLCS.swift` and `SwiftLCS+Foundation.swift` *(optional)* to your project.
+
 ## Usage
 
 ### String
