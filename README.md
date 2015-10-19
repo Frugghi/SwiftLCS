@@ -42,10 +42,10 @@ let z = x.longestCommonSubsequence(y) // [2, 4, 6]
 let x = [1, 2, 3, 4, 5, 6, 7]
 let y = [8, 9, 2, 10, 4, 11, 6, 12]
 
-let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = x.longestCommonSubsequence(y)
-// commonIndexes: [1, 3, 5]
-// addedIndexes: [0, 1, 3, 5, 7]
-// removedIndexes: [0, 2, 4, 6]
+let diff = x.diff(y)
+// diff.commonIndexes: [1, 3, 5]
+// diff.addedIndexes: [0, 1, 3, 5, 7]
+// diff.removedIndexes: [0, 2, 4, 6]
 ```
 
 ## Documentation
