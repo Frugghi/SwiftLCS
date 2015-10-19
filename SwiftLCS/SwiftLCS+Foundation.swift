@@ -27,13 +27,16 @@ import Foundation
 public extension CollectionType where Generator.Element : Equatable, Index: BidirectionalIndexType {
     
     /**
-    Return the longest common subsequence between two collections.
-    - parameter collection: The collection with which to compare the receiver.
-    - complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
-    - returns: A tuple of `common`, `added` and `removed` indexes.
+    Returns the indexes whose corresponding values in the receiver and in the given collection are/are not in the LCS.
+    
+    - Note:
+    The returned indexes are:
         - `common`: The indexes whose corresponding values in the receiver are in the LCS.
         - `added`: The indexes whose corresponding values in the given collection are not in the LCS.
         - `removed`: The indexes whose corresponding values in the receiver are not in the LCS.
+    - complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
+    - parameter collection: The collection with which to compare the receiver.
+    - returns: A tuple of `common`, `added` and `removed` indexes.
     */
     @warn_unused_result
     public func longestCommonSubsequence(collection: Self) -> (common: NSIndexSet, added: NSIndexSet, removed: NSIndexSet) {
