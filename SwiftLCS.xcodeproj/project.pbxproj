@@ -69,7 +69,6 @@
 		182E30D31BD4F44A008EC94E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLCS.swift; sourceTree = "<group>"; };
 		182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftLCS+Foundation.swift"; sourceTree = "<group>"; };
-		182E30E71BD4F94F008EC94E /* Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1886DD131BCEC60900E67CD7 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		1886DD151BCEC7FB00E67CD7 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		1886DD171BCECA3000E67CD7 /* IndexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTests.swift; sourceTree = "<group>"; };
@@ -99,13 +98,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		182E30E31BD4F94F008EC94E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -125,7 +117,6 @@
 				1804B6521BCDE57F00BD250F /* SwiftLCSDemo.app */,
 				1804B6661BCDE58000BD250F /* SwiftLCSTests.xctest */,
 				182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */,
-				182E30E71BD4F94F008EC94E /* Test.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,13 +164,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				182E30D21BD4F44A008EC94E /* SwiftLCS.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		182E30E41BD4F94F008EC94E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,24 +225,6 @@
 			productReference = 182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		182E30E61BD4F94F008EC94E /* Test */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 182E30EC1BD4F950008EC94E /* Build configuration list for PBXNativeTarget "Test" */;
-			buildPhases = (
-				182E30E21BD4F94F008EC94E /* Sources */,
-				182E30E31BD4F94F008EC94E /* Frameworks */,
-				182E30E41BD4F94F008EC94E /* Headers */,
-				182E30E51BD4F94F008EC94E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Test;
-			productName = Test;
-			productReference = 182E30E71BD4F94F008EC94E /* Test.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -280,9 +246,6 @@
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 427KLC8779;
 					};
-					182E30E61BD4F94F008EC94E = {
-						CreatedOnToolsVersion = 7.0.1;
-					};
 				};
 			};
 			buildConfigurationList = 1804B64D1BCDE57F00BD250F /* Build configuration list for PBXProject "SwiftLCS" */;
@@ -301,7 +264,6 @@
 				1804B6511BCDE57F00BD250F /* SwiftLCSDemo */,
 				1804B6651BCDE58000BD250F /* SwiftLCSTests */,
 				182E30CE1BD4F44A008EC94E /* SwiftLCS */,
-				182E30E61BD4F94F008EC94E /* Test */,
 			);
 		};
 /* End PBXProject section */
@@ -325,13 +287,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		182E30CD1BD4F44A008EC94E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		182E30E51BD4F94F008EC94E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,13 +321,6 @@
 			files = (
 				182E30DD1BD4F46A008EC94E /* SwiftLCS.swift in Sources */,
 				182E30DE1BD4F46A008EC94E /* SwiftLCS+Foundation.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		182E30E21BD4F94F008EC94E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,46 +537,6 @@
 			};
 			name = Release;
 		};
-		182E30ED1BD4F950008EC94E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Test/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tmadonia.Test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		182E30EE1BD4F950008EC94E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Test/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tmadonia.Test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -666,14 +574,7 @@
 				182E30DA1BD4F44A008EC94E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		182E30EC1BD4F950008EC94E /* Build configuration list for PBXNativeTarget "Test" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				182E30ED1BD4F950008EC94E /* Debug */,
-				182E30EE1BD4F950008EC94E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
