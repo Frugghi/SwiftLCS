@@ -45,6 +45,9 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes, [1, 3, 5])
         XCTAssertEqual(diff.addedIndexes, [0, 1, 3, 5, 7])
         XCTAssertEqual(diff.removedIndexes, [0, 2, 4, 6])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
 
     func testPrefix() {
@@ -55,6 +58,9 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
         XCTAssertEqual(diff.addedIndexes, [3, 4])
         XCTAssertEqual(diff.removedIndexes, [3, 4])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
 
     func testSuffix() {
@@ -65,6 +71,9 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes, [2, 3, 4])
         XCTAssertEqual(diff.addedIndexes, [0, 1])
         XCTAssertEqual(diff.removedIndexes, [0, 1])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
 
     func testEqual() {
@@ -75,6 +84,9 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2, 3, 4])
         XCTAssertEqual(diff.addedIndexes, [])
         XCTAssertEqual(diff.removedIndexes, [])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
 
     func testEmpty() {
@@ -85,6 +97,22 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes, [])
         XCTAssertEqual(diff.addedIndexes, [])
         XCTAssertEqual(diff.removedIndexes, [0, 1, 2, 3, 4])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
+    }
+    
+    func testBothEmpty() {
+        let old = [Int]()
+        let new = [Int]()
+        let diff = old.diff(new)
+        
+        XCTAssertEqual(diff.commonIndexes, [])
+        XCTAssertEqual(diff.addedIndexes, [])
+        XCTAssertEqual(diff.removedIndexes, [])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
 
     func testDifferentLengths() {
@@ -95,6 +123,9 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
         XCTAssertEqual(diff.addedIndexes, [1, 2])
         XCTAssertEqual(diff.removedIndexes, [3, 4, 5])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
     
     func testNSIndexSet() {
