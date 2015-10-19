@@ -24,34 +24,33 @@
 
 import Foundation
 
-public extension CollectionType where Generator.Element : Equatable, Index: BidirectionalIndexType {
+/**
+An extension of `Diff`, which adds support for `Foundation` types such as `NSIndexSet`.
+*/
+public extension Diff {
     
-    /**
-    Returns the indexes whose corresponding values in the receiver and in the given collection are/are not in the LCS.
+    /// The indexes whose corresponding values in the old collection are in the LCS.
+    public var commonIndexSet: NSIndexSet {
+        return self.toIndexSet(self.common)
+    }
     
-    - Note:
-    The returned indexes are:
-        - `common`: The indexes whose corresponding values in the receiver are in the LCS.
-        - `added`: The indexes whose corresponding values in the given collection are not in the LCS.
-        - `removed`: The indexes whose corresponding values in the receiver are not in the LCS.
-    - complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
-    - parameter collection: The collection with which to compare the receiver.
-    - returns: A tuple of `common`, `added` and `removed` indexes.
-    */
-    @warn_unused_result
-    public func longestCommonSubsequence(collection: Self) -> (common: NSIndexSet, added: NSIndexSet, removed: NSIndexSet) {
-        let (common, added, removed): ([Index], [Index], [Index]) = self.longestCommonSubsequence(collection)
-
-        return (common: self.toIndexSet(common), added: collection.toIndexSet(added), removed: self.toIndexSet(removed))
+    /// The indexes whose corresponding values in the new collection are not in the LCS.
+    public var addedIndexSet: NSIndexSet {
+        return self.toIndexSet(self.added)
+    }
+    
+    /// The indexes whose corresponding values in the old collection are not in the LCS.
+    public var removedIndexSet: NSIndexSet {
+        return self.toIndexSet(self.removed)
     }
     
     // MARK: - Private
     
-    private func toIndexSet(indexes: [Index]) -> NSIndexSet {
+    private func toIndexSet(diff: (indexes: [Index], startIndex: Index)) -> NSIndexSet {
         let indexSet = NSMutableIndexSet()
-        indexes.forEach { index in
+        diff.indexes.forEach { index in
             var i = 0
-            for var countIndex = self.startIndex; countIndex.distanceTo(index) > 0; countIndex = countIndex.successor() {
+            for var countIndex = diff.startIndex; countIndex.distanceTo(index) > 0; countIndex = countIndex.successor() {
                 i++
             }
             indexSet.addIndex(i)

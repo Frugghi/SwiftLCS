@@ -40,73 +40,73 @@ class IndexTests: XCTestCase {
     func testSimple() {
         let old = [1, 2, 3, 4, 5, 6, 7]
         let new = [8, 9, 2, 10, 4, 11, 6, 12]
-        let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
 
-        XCTAssertEqual(commonIndexes, [1, 3, 5])
-        XCTAssertEqual(addedIndexes, [0, 1, 3, 5, 7])
-        XCTAssertEqual(removedIndexes, [0, 2, 4, 6])
+        XCTAssertEqual(diff.commonIndexes, [1, 3, 5])
+        XCTAssertEqual(diff.addedIndexes, [0, 1, 3, 5, 7])
+        XCTAssertEqual(diff.removedIndexes, [0, 2, 4, 6])
     }
 
     func testPrefix() {
         let old = [1, 2, 3, 4, 5]
         let new = [1, 2, 3, 6, 7]
-        let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
 
-        XCTAssertEqual(commonIndexes, [0, 1, 2])
-        XCTAssertEqual(addedIndexes, [3, 4])
-        XCTAssertEqual(removedIndexes, [3, 4])
+        XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
+        XCTAssertEqual(diff.addedIndexes, [3, 4])
+        XCTAssertEqual(diff.removedIndexes, [3, 4])
     }
 
     func testSuffix() {
         let old = [1, 2, 3, 4, 5]
         let new = [6, 7, 3, 4, 5]
-        let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
 
-        XCTAssertEqual(commonIndexes, [2, 3, 4])
-        XCTAssertEqual(addedIndexes, [0, 1])
-        XCTAssertEqual(removedIndexes, [0, 1])
+        XCTAssertEqual(diff.commonIndexes, [2, 3, 4])
+        XCTAssertEqual(diff.addedIndexes, [0, 1])
+        XCTAssertEqual(diff.removedIndexes, [0, 1])
     }
 
     func testEqual() {
         let old = [1, 2, 3, 4, 5]
         let new = [1, 2, 3, 4, 5]
-        let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
 
-        XCTAssertEqual(commonIndexes, [0, 1, 2, 3, 4])
-        XCTAssertEqual(addedIndexes, [])
-        XCTAssertEqual(removedIndexes, [])
+        XCTAssertEqual(diff.commonIndexes, [0, 1, 2, 3, 4])
+        XCTAssertEqual(diff.addedIndexes, [])
+        XCTAssertEqual(diff.removedIndexes, [])
     }
 
     func testEmpty() {
         let old = [1, 2, 3, 4, 5]
         let new = [Int]()
-        let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
 
-        XCTAssertEqual(commonIndexes, [])
-        XCTAssertEqual(addedIndexes, [])
-        XCTAssertEqual(removedIndexes, [0, 1, 2, 3, 4])
+        XCTAssertEqual(diff.commonIndexes, [])
+        XCTAssertEqual(diff.addedIndexes, [])
+        XCTAssertEqual(diff.removedIndexes, [0, 1, 2, 3, 4])
     }
 
     func testDifferentLengths() {
         let old = [1, 2, 3, 4, 5, 6]
         let new = [1, 6, 7, 2, 3]
-        let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
 
-        XCTAssertEqual(commonIndexes, [0, 1, 2])
-        XCTAssertEqual(addedIndexes, [1, 2])
-        XCTAssertEqual(removedIndexes, [3, 4, 5])
+        XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
+        XCTAssertEqual(diff.addedIndexes, [1, 2])
+        XCTAssertEqual(diff.removedIndexes, [3, 4, 5])
     }
     
     func testNSIndexSet() {
         let old = [1, 2, 3, 4, 5, 6, 7]
         let new = [8, 9, 2, 10, 4, 11, 6, 12]
-        let (commonIndexes, addedIndexes, removedIndexes): (NSIndexSet, NSIndexSet, NSIndexSet) = old.longestCommonSubsequence(new)
+        let diff = old.diff(new)
         
         let commonIndexSet = NSMutableIndexSet()
         commonIndexSet.addIndex(1)
         commonIndexSet.addIndex(3)
         commonIndexSet.addIndex(5)
-        XCTAssertEqual(commonIndexes, commonIndexSet)
+        XCTAssertEqual(diff.commonIndexSet, commonIndexSet)
         
         let addedIndexSet = NSMutableIndexSet()
         addedIndexSet.addIndex(0)
@@ -114,14 +114,14 @@ class IndexTests: XCTestCase {
         addedIndexSet.addIndex(3)
         addedIndexSet.addIndex(5)
         addedIndexSet.addIndex(7)
-        XCTAssertEqual(addedIndexes, addedIndexSet)
+        XCTAssertEqual(diff.addedIndexSet, addedIndexSet)
         
         let removedIndexSet = NSMutableIndexSet()
         removedIndexSet.addIndex(0)
         removedIndexSet.addIndex(2)
         removedIndexSet.addIndex(4)
         removedIndexSet.addIndex(6)
-        XCTAssertEqual(removedIndexes, removedIndexSet)
+        XCTAssertEqual(diff.removedIndexSet, removedIndexSet)
     }
 
 }

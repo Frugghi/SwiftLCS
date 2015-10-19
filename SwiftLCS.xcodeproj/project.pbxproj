@@ -240,7 +240,6 @@
 					};
 					1804B6651BCDE58000BD250F = {
 						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = 1804B6511BCDE57F00BD250F;
 					};
 					182E30CE1BD4F44A008EC94E = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -469,24 +468,20 @@
 		1804B6731BCDE58000BD250F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SwiftLCSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.tmadonia.SwiftLCSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftLCS.app/SwiftLCS";
 			};
 			name = Debug;
 		};
 		1804B6741BCDE58000BD250F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SwiftLCSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = it.tmadonia.SwiftLCSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftLCS.app/SwiftLCS";
 			};
 			name = Release;
 		};

@@ -23,24 +23,56 @@
 //
 
 /**
-Returns the indexes whose corresponding values in the receiver and in the given collection are/are not in the LCS.
+A generic struct that represents a diff between two collections.
 */
-public extension CollectionType where Generator.Element : Equatable, Index: BidirectionalIndexType {
+public struct Diff<Index: BidirectionalIndexType> {
+    
+    /// The indexes whose corresponding values in the old collection are in the LCS.
+    public var commonIndexes: [Index] {
+        return self.common.indexes
+    }
+    
+    /// The indexes whose corresponding values in the new collection are not in the LCS.
+    public var addedIndexes: [Index] {
+        return self.added.indexes
+    }
+    
+    /// The indexes whose corresponding values in the old collection are not in the LCS.
+    public var removedIndexes: [Index] {
+        return self.removed.indexes
+    }
+    
+    internal let common: (indexes: [Index], startIndex: Index)
+    internal let added: (indexes: [Index], startIndex: Index)
+    internal let removed: (indexes: [Index], startIndex: Index)
+    
+    /// Construct the `Diff` between two given collections.
+    public init<C: CollectionType where C.Index == Index, C.Generator.Element: Equatable>(_ old: C, _ new: C) {
+        self = old.diff(new)
+    }
+    
+    private init<C: CollectionType where C.Index == Index>(common: ([Index], C), added: ([Index], C), removed: ([Index], C)) {
+        self.common = (indexes: common.0, startIndex: common.1.startIndex)
+        self.added = (indexes: added.0, startIndex: added.1.startIndex)
+        self.removed = (indexes: removed.0, startIndex: removed.1.startIndex)
+    }
+    
+}
+
+/**
+An extension of `CollectionType`, which calculates the diff between two collections.
+*/
+public extension CollectionType where Generator.Element: Equatable, Index: BidirectionalIndexType {
 
     /**
-    Returns the indexes whose corresponding values in the receiver and in the given collection are/are not in the LCS.
+    Returns the diff between two collections.
     
-    - Note:
-    The returned indexes are:
-        - `common`: The indexes whose corresponding values in the receiver are in the LCS.
-        - `added`: The indexes whose corresponding values in the given collection are not in the LCS.
-        - `removed`: The indexes whose corresponding values in the receiver are not in the LCS.
     - complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
     - parameter collection: The collection with which to compare the receiver.
-    - returns: A tuple of `common`, `added` and `removed` indexes.
+    - returns: The diff between the receiver and the given collection.
     */
     @warn_unused_result
-    public func longestCommonSubsequence(collection: Self) -> (common: [Index], added: [Index], removed: [Index]) {
+    public func diff(collection: Self) -> Diff<Index> {
         var lengths = Array2D(rows: Int(self.count.toIntMax()) + 1, columns: Int(collection.count.toIntMax()) + 1, repeatedValue: 0)
         for i in (self.startIndexWrapper..<self.endIndexWrapper).reverse() {
             for j in (collection.startIndexWrapper..<collection.endIndexWrapper).reverse() {
@@ -80,15 +112,15 @@ public extension CollectionType where Generator.Element : Equatable, Index: Bidi
             }
         }
 
-        return (common: commonIndexes, added: addedIndexes, removed: removedIndexes)
+        return Diff(common: (commonIndexes, self), added: (addedIndexes, collection), removed: (removedIndexes, self))
     }
 
 }
 
 /**
-Returns the longest common subsequence between two collections.
+An extension of `RangeReplaceableCollectionType`, which calculates the longest common subsequence between two collections.
 */
-public extension RangeReplaceableCollectionType where Generator.Element : Equatable, Index: BidirectionalIndexType {
+public extension RangeReplaceableCollectionType where Generator.Element: Equatable, Index: BidirectionalIndexType {
 
     /**
     Returns the longest common subsequence between two collections.
@@ -100,8 +132,8 @@ public extension RangeReplaceableCollectionType where Generator.Element : Equata
     public func longestCommonSubsequence(collection: Self) -> Self {
         var subsequence = Self()
 
-        let (commonIndexes, _, _): ([Index], [Index], [Index]) = self.longestCommonSubsequence(collection)
-        commonIndexes.forEach { index in
+        let diff = self.diff(collection)
+        diff.commonIndexes.forEach { index in
             subsequence.append(self[index])
         }
 
@@ -111,7 +143,7 @@ public extension RangeReplaceableCollectionType where Generator.Element : Equata
 }
 
 /**
-Returns the longest common subsequence between two strings.
+An extension of `String`, which calculates the longest common subsequence between two strings.
 */
 public extension String {
 

@@ -3,7 +3,7 @@
 ## 1.0 (2015-10-19)
 
 ##### CollectionType extension
-- `longestCommonSubsequence` returns the indexes whose corresponding values in the receiver and in the given collection are/are not in the LCS.
+- `diff` the diff between two collections.
 
 ##### RangeReplaceableCollectionType extension
 - `longestCommonSubsequence` returns the longest common subsequence between two collections.
