@@ -48,5 +48,8 @@ let (commonIndexes, addedIndexes, removedIndexes): ([Int], [Int], [Int]) = x.lon
 // removedIndexes: [0, 2, 4, 6]
 ```
 
+## Documentation
+The API documentation is available [here](http://cocoadocs.org/docsets/SwiftLCS/).
+
 ## License
 SwiftLCS is released under the MIT license. See LICENSE for details.
