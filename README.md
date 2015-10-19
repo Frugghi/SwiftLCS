@@ -9,11 +9,21 @@ The project is based on the Objective-C implementation of [NSArray+LongestCommon
 
 ### CocoaPods
 [CocoaPods](https://cocoapods.org) is the dependency manager for Swift and Objective-C Cocoa projects. It has over ten thousand libraries and can help you scale your projects elegantly.
+
+Add this to your *Podfile*:
 ```Ruby
 platform :ios, '8.0'
 use_frameworks!
 
 pod 'SwiftLCS'
+```
+
+### Carthage
+[Carthage](https://github.com/Carthage/Carthage) builds your dependencies and provides you with binary frameworks, but you retain full control over your project structure and setup.
+
+Add this to your *Cartfile*:
+```Ruby
+github "Frugghi/SwiftLCS"
 ```
 
 ### Manual
@@ -51,5 +61,5 @@ let diff = x.diff(y)
 ## Documentation
 The API documentation is available [here](http://cocoadocs.org/docsets/SwiftLCS/).
 
-## License
-SwiftLCS is released under the MIT license. See LICENSE for details.
+## License [![LICENSE](https://img.shields.io/cocoapods/l/SwiftLCS.svg)](https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE)
+*SwiftLCS* is released under the MIT license. See [LICENSE](https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE) for details.
