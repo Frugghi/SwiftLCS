@@ -23,6 +23,7 @@
 //
 
 import UIKit
+import SwiftLCS
 
 class ViewController: UIViewController {
 
