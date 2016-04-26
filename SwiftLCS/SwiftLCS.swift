@@ -91,12 +91,12 @@ public extension CollectionType where Generator.Element: Equatable, Index: Bidir
         while row < lengths.rows - 1 && column < lengths.columns - 1 {
             if self[row] == collection[column] {
                 commonIndexes.append(row)
-                row++
-                column++
+                row = row.successor()
+                column = column.successor()
             } else if lengths[row+1, column] >= lengths[row, column+1] {
-                row++
+                row = row.successor()
             } else {
-                column++
+                column = column.successor()
             }
         }
 

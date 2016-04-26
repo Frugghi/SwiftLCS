@@ -49,11 +49,7 @@ public extension Diff {
     private func toIndexSet(diff: (indexes: [Index], startIndex: Index)) -> NSIndexSet {
         let indexSet = NSMutableIndexSet()
         diff.indexes.forEach { index in
-            var i = 0
-            for var countIndex = diff.startIndex; countIndex.distanceTo(index) > 0; countIndex = countIndex.successor() {
-                i++
-            }
-            indexSet.addIndex(i)
+            indexSet.addIndex(Int(diff.startIndex.distanceTo(index).toIntMax()))
         }
         
         return indexSet
