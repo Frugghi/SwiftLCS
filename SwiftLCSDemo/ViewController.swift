@@ -36,8 +36,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    @IBAction func textFieldChanged(sender: UITextField!) {
-        guard let first = self.firstTextField.text, second = self.secondTextField.text else {
+    @IBAction func textFieldChanged(_ sender: UITextField!) {
+        guard let first = self.firstTextField.text, let second = self.secondTextField.text else {
             self.resultTextField.text = nil
             return
         }

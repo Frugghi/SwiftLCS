@@ -133,25 +133,13 @@ class IndexTests: XCTestCase {
         let new = [8, 9, 2, 10, 4, 11, 6, 12]
         let diff = old.diff(new)
         
-        let commonIndexSet = NSMutableIndexSet()
-        commonIndexSet.addIndex(1)
-        commonIndexSet.addIndex(3)
-        commonIndexSet.addIndex(5)
+        let commonIndexSet = IndexSet([1, 3, 5])
         XCTAssertEqual(diff.commonIndexSet, commonIndexSet)
         
-        let addedIndexSet = NSMutableIndexSet()
-        addedIndexSet.addIndex(0)
-        addedIndexSet.addIndex(1)
-        addedIndexSet.addIndex(3)
-        addedIndexSet.addIndex(5)
-        addedIndexSet.addIndex(7)
+        let addedIndexSet = IndexSet([0, 1, 3, 5, 7])
         XCTAssertEqual(diff.addedIndexSet, addedIndexSet)
         
-        let removedIndexSet = NSMutableIndexSet()
-        removedIndexSet.addIndex(0)
-        removedIndexSet.addIndex(2)
-        removedIndexSet.addIndex(4)
-        removedIndexSet.addIndex(6)
+        let removedIndexSet = IndexSet([0, 2, 4, 6])
         XCTAssertEqual(diff.removedIndexSet, removedIndexSet)
     }
 

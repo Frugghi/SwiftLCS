@@ -25,34 +25,31 @@
 import Foundation
 
 /**
-An extension of `Diff`, which adds support for `Foundation` types such as `NSIndexSet`.
+An extension of `Diff`, which adds support for `Foundation` types such as `IndexSet`.
 */
-public extension Diff {
+public extension Diff where Index: Strideable, Index.Stride: SignedInteger {
     
     /// The indexes whose corresponding values in the old collection are in the LCS.
-    public var commonIndexSet: NSIndexSet {
+    public var commonIndexSet: IndexSet {
         return self.toIndexSet(self.common)
     }
     
     /// The indexes whose corresponding values in the new collection are not in the LCS.
-    public var addedIndexSet: NSIndexSet {
+    public var addedIndexSet: IndexSet {
         return self.toIndexSet(self.added)
     }
     
     /// The indexes whose corresponding values in the old collection are not in the LCS.
-    public var removedIndexSet: NSIndexSet {
+    public var removedIndexSet: IndexSet {
         return self.toIndexSet(self.removed)
     }
     
     // MARK: - Private
     
-    private func toIndexSet(diff: (indexes: [Index], startIndex: Index)) -> NSIndexSet {
-        let indexSet = NSMutableIndexSet()
-        diff.indexes.forEach { index in
-            indexSet.addIndex(Int(diff.startIndex.distanceTo(index).toIntMax()))
-        }
+    fileprivate func toIndexSet(_ diff: (indexes: [Index], startIndex: Index)) -> IndexSet {
+        let indexes = diff.indexes.map { Int((diff.startIndex..<$0).count.toIntMax()) }
         
-        return indexSet
+        return IndexSet(indexes)
     }
     
 }
