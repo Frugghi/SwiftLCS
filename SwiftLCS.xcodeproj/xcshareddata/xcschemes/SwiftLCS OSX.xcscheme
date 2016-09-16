@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "182E30CE1BD4F44A008EC94E"
+               BlueprintIdentifier = "18BCD1101D8B752200B6E4B5"
                BuildableName = "SwiftLCS.framework"
-               BlueprintName = "SwiftLCS"
+               BlueprintName = "SwiftLCS OSX"
                ReferencedContainer = "container:SwiftLCS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "182E30CE1BD4F44A008EC94E"
+            BlueprintIdentifier = "18BCD1101D8B752200B6E4B5"
             BuildableName = "SwiftLCS.framework"
-            BlueprintName = "SwiftLCS"
+            BlueprintName = "SwiftLCS OSX"
             ReferencedContainer = "container:SwiftLCS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "182E30CE1BD4F44A008EC94E"
+            BlueprintIdentifier = "18BCD1101D8B752200B6E4B5"
             BuildableName = "SwiftLCS.framework"
-            BlueprintName = "SwiftLCS"
+            BlueprintName = "SwiftLCS OSX"
             ReferencedContainer = "container:SwiftLCS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

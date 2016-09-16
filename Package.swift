@@ -22,10 +22,9 @@
 // SOFTWARE.
 //
 
-@import Foundation;
+import PackageDescription
 
-//! Project version number for SwiftLCS.
-FOUNDATION_EXPORT double SwiftLCSVersionNumber;
-
-//! Project version string for SwiftLCS.
-FOUNDATION_EXPORT const unsigned char SwiftLCSVersionString[];
+let package = Package(
+    name: "SwiftLCS",
+    exclude: [ "SwiftLCS Example", "SwiftLCS Tests", "SwiftLCS.xcworkspace" ]
+)

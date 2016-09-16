@@ -7,30 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1804B6561BCDE57F00BD250F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1804B6551BCDE57F00BD250F /* AppDelegate.swift */; };
-		1804B6581BCDE57F00BD250F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1804B6571BCDE57F00BD250F /* ViewController.swift */; };
-		1804B65B1BCDE57F00BD250F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1804B6591BCDE57F00BD250F /* Main.storyboard */; };
-		1804B65D1BCDE57F00BD250F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1804B65C1BCDE57F00BD250F /* Assets.xcassets */; };
-		1804B6601BCDE57F00BD250F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1804B65E1BCDE57F00BD250F /* LaunchScreen.storyboard */; };
 		182E30D21BD4F44A008EC94E /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		182E30D61BD4F44A008EC94E /* SwiftLCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */; };
-		182E30D71BD4F44A008EC94E /* SwiftLCS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		182E30DD1BD4F46A008EC94E /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
 		182E30DE1BD4F46A008EC94E /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
 		182E30E11BD4F502008EC94E /* SwiftLCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */; };
 		1886DD141BCEC60900E67CD7 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886DD131BCEC60900E67CD7 /* StringTests.swift */; };
 		1886DD161BCEC7FB00E67CD7 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886DD151BCEC7FB00E67CD7 /* ArrayTests.swift */; };
 		1886DD181BCECA3000E67CD7 /* IndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886DD171BCECA3000E67CD7 /* IndexTests.swift */; };
+		18BCD0F61D8B71BA00B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18BCD0F71D8B71C600B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
+		18BCD0F81D8B71C600B6E4B5 /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
+		18BCD1081D8B73F800B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18BCD1091D8B740200B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
+		18BCD10A1D8B740200B6E4B5 /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
+		18BCD1191D8B757B00B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18BCD11A1D8B758200B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
+		18BCD11B1D8B758400B6E4B5 /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		182E30D41BD4F44A008EC94E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1804B64A1BCDE57F00BD250F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 182E30CE1BD4F44A008EC94E;
-			remoteInfo = SwiftLCS;
-		};
 		182E30DF1BD4F4FE008EC94E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1804B64A1BCDE57F00BD250F /* Project object */;
@@ -40,29 +35,8 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		182E30B81BD4F364008EC94E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				182E30D71BD4F44A008EC94E /* SwiftLCS.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		1804B6521BCDE57F00BD250F /* SwiftLCSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLCSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1804B6551BCDE57F00BD250F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1804B6571BCDE57F00BD250F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1804B65A1BCDE57F00BD250F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1804B65C1BCDE57F00BD250F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1804B65F1BCDE57F00BD250F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1804B6611BCDE57F00BD250F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1804B6661BCDE58000BD250F /* SwiftLCSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftLCSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1804B6661BCDE58000BD250F /* SwiftLCS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftLCS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1804B66C1BCDE58000BD250F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182E30D11BD4F44A008EC94E /* SwiftLCS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLCS.h; sourceTree = "<group>"; };
@@ -72,17 +46,13 @@
 		1886DD131BCEC60900E67CD7 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		1886DD151BCEC7FB00E67CD7 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		1886DD171BCECA3000E67CD7 /* IndexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTests.swift; sourceTree = "<group>"; };
+		18BCD0EE1D8B6FB700B6E4B5 /* SwiftLCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18BCD0FE1D8B72F400B6E4B5 /* SwiftLCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18BCD1061D8B73E000B6E4B5 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		18BCD1111D8B752200B6E4B5 /* SwiftLCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1804B64F1BCDE57F00BD250F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				182E30D61BD4F44A008EC94E /* SwiftLCS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1804B6631BCDE58000BD250F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -98,15 +68,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18BCD0EA1D8B6FB700B6E4B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD0FA1D8B72F400B6E4B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD10D1D8B752200B6E4B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1804B6491BCDE57F00BD250F = {
 			isa = PBXGroup;
 			children = (
-				1804B6541BCDE57F00BD250F /* SwiftLCSDemo */,
-				1804B6691BCDE58000BD250F /* SwiftLCSTests */,
 				182E30D01BD4F44A008EC94E /* SwiftLCS */,
+				1804B6691BCDE58000BD250F /* SwiftLCS Tests */,
 				1804B6531BCDE57F00BD250F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,27 +104,16 @@
 		1804B6531BCDE57F00BD250F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1804B6521BCDE57F00BD250F /* SwiftLCSDemo.app */,
-				1804B6661BCDE58000BD250F /* SwiftLCSTests.xctest */,
+				1804B6661BCDE58000BD250F /* SwiftLCS Tests.xctest */,
 				182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */,
+				18BCD0EE1D8B6FB700B6E4B5 /* SwiftLCS.framework */,
+				18BCD0FE1D8B72F400B6E4B5 /* SwiftLCS.framework */,
+				18BCD1111D8B752200B6E4B5 /* SwiftLCS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1804B6541BCDE57F00BD250F /* SwiftLCSDemo */ = {
-			isa = PBXGroup;
-			children = (
-				1804B6551BCDE57F00BD250F /* AppDelegate.swift */,
-				1804B6571BCDE57F00BD250F /* ViewController.swift */,
-				1804B6591BCDE57F00BD250F /* Main.storyboard */,
-				1804B65C1BCDE57F00BD250F /* Assets.xcassets */,
-				1804B65E1BCDE57F00BD250F /* LaunchScreen.storyboard */,
-				1804B6611BCDE57F00BD250F /* Info.plist */,
-			);
-			path = SwiftLCSDemo;
-			sourceTree = "<group>";
-		};
-		1804B6691BCDE58000BD250F /* SwiftLCSTests */ = {
+		1804B6691BCDE58000BD250F /* SwiftLCS Tests */ = {
 			isa = PBXGroup;
 			children = (
 				1886DD131BCEC60900E67CD7 /* StringTests.swift */,
@@ -142,18 +121,27 @@
 				1886DD171BCECA3000E67CD7 /* IndexTests.swift */,
 				1804B66C1BCDE58000BD250F /* Info.plist */,
 			);
-			path = SwiftLCSTests;
+			path = "SwiftLCS Tests";
 			sourceTree = "<group>";
 		};
 		182E30D01BD4F44A008EC94E /* SwiftLCS */ = {
 			isa = PBXGroup;
 			children = (
-				182E30D11BD4F44A008EC94E /* SwiftLCS.h */,
 				182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */,
 				182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */,
-				182E30D31BD4F44A008EC94E /* Info.plist */,
+				18BCD10B1D8B740C00B6E4B5 /* Supporting Files */,
 			);
 			path = SwiftLCS;
+			sourceTree = "<group>";
+		};
+		18BCD10B1D8B740C00B6E4B5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				182E30D11BD4F44A008EC94E /* SwiftLCS.h */,
+				182E30D31BD4F44A008EC94E /* Info.plist */,
+				18BCD1061D8B73E000B6E4B5 /* Info-tvOS.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,31 +155,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18BCD0EB1D8B6FB700B6E4B5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BCD0F61D8B71BA00B6E4B5 /* SwiftLCS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD0FB1D8B72F400B6E4B5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BCD1081D8B73F800B6E4B5 /* SwiftLCS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD10E1D8B752200B6E4B5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BCD1191D8B757B00B6E4B5 /* SwiftLCS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1804B6511BCDE57F00BD250F /* SwiftLCSDemo */ = {
+		1804B6651BCDE58000BD250F /* SwiftLCS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1804B66F1BCDE58000BD250F /* Build configuration list for PBXNativeTarget "SwiftLCSDemo" */;
-			buildPhases = (
-				1804B64E1BCDE57F00BD250F /* Sources */,
-				1804B64F1BCDE57F00BD250F /* Frameworks */,
-				1804B6501BCDE57F00BD250F /* Resources */,
-				182E30B81BD4F364008EC94E /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				182E30D51BD4F44A008EC94E /* PBXTargetDependency */,
-			);
-			name = SwiftLCSDemo;
-			productName = SwiftLCS;
-			productReference = 1804B6521BCDE57F00BD250F /* SwiftLCSDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		1804B6651BCDE58000BD250F /* SwiftLCSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1804B6721BCDE58000BD250F /* Build configuration list for PBXNativeTarget "SwiftLCSTests" */;
+			buildConfigurationList = 1804B6721BCDE58000BD250F /* Build configuration list for PBXNativeTarget "SwiftLCS Tests" */;
 			buildPhases = (
 				1804B6621BCDE58000BD250F /* Sources */,
 				1804B6631BCDE58000BD250F /* Frameworks */,
@@ -202,14 +195,14 @@
 			dependencies = (
 				182E30E01BD4F4FE008EC94E /* PBXTargetDependency */,
 			);
-			name = SwiftLCSTests;
+			name = "SwiftLCS Tests";
 			productName = SwiftLCSTests;
-			productReference = 1804B6661BCDE58000BD250F /* SwiftLCSTests.xctest */;
+			productReference = 1804B6661BCDE58000BD250F /* SwiftLCS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		182E30CE1BD4F44A008EC94E /* SwiftLCS */ = {
+		182E30CE1BD4F44A008EC94E /* SwiftLCS iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 182E30D81BD4F44A008EC94E /* Build configuration list for PBXNativeTarget "SwiftLCS" */;
+			buildConfigurationList = 182E30D81BD4F44A008EC94E /* Build configuration list for PBXNativeTarget "SwiftLCS iOS" */;
 			buildPhases = (
 				182E30CA1BD4F44A008EC94E /* Sources */,
 				182E30CB1BD4F44A008EC94E /* Frameworks */,
@@ -220,9 +213,63 @@
 			);
 			dependencies = (
 			);
-			name = SwiftLCS;
+			name = "SwiftLCS iOS";
 			productName = SwiftLCS;
 			productReference = 182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		18BCD0ED1D8B6FB700B6E4B5 /* SwiftLCS watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18BCD0F31D8B6FB700B6E4B5 /* Build configuration list for PBXNativeTarget "SwiftLCS watchOS" */;
+			buildPhases = (
+				18BCD0E91D8B6FB700B6E4B5 /* Sources */,
+				18BCD0EA1D8B6FB700B6E4B5 /* Frameworks */,
+				18BCD0EB1D8B6FB700B6E4B5 /* Headers */,
+				18BCD0EC1D8B6FB700B6E4B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftLCS watchOS";
+			productName = "SwiftLCS watchOS";
+			productReference = 18BCD0EE1D8B6FB700B6E4B5 /* SwiftLCS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		18BCD0FD1D8B72F400B6E4B5 /* SwiftLCS tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18BCD1031D8B72F400B6E4B5 /* Build configuration list for PBXNativeTarget "SwiftLCS tvOS" */;
+			buildPhases = (
+				18BCD0F91D8B72F400B6E4B5 /* Sources */,
+				18BCD0FA1D8B72F400B6E4B5 /* Frameworks */,
+				18BCD0FB1D8B72F400B6E4B5 /* Headers */,
+				18BCD0FC1D8B72F400B6E4B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftLCS tvOS";
+			productName = SwiftLCS;
+			productReference = 18BCD0FE1D8B72F400B6E4B5 /* SwiftLCS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		18BCD1101D8B752200B6E4B5 /* SwiftLCS OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18BCD1161D8B752300B6E4B5 /* Build configuration list for PBXNativeTarget "SwiftLCS OSX" */;
+			buildPhases = (
+				18BCD10C1D8B752200B6E4B5 /* Sources */,
+				18BCD10D1D8B752200B6E4B5 /* Frameworks */,
+				18BCD10E1D8B752200B6E4B5 /* Headers */,
+				18BCD10F1D8B752200B6E4B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftLCS OSX";
+			productName = "SwiftLCS OSX";
+			productReference = 18BCD1111D8B752200B6E4B5 /* SwiftLCS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -235,10 +282,6 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Tommaso Madonia";
 				TargetAttributes = {
-					1804B6511BCDE57F00BD250F = {
-						CreatedOnToolsVersion = 7.0.1;
-						LastSwiftMigration = 0800;
-					};
 					1804B6651BCDE58000BD250F = {
 						CreatedOnToolsVersion = 7.0.1;
 						LastSwiftMigration = 0800;
@@ -247,6 +290,18 @@
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 427KLC8779;
 						LastSwiftMigration = 0800;
+					};
+					18BCD0ED1D8B6FB700B6E4B5 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					18BCD0FD1D8B72F400B6E4B5 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					18BCD1101D8B752200B6E4B5 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -263,24 +318,16 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1804B6511BCDE57F00BD250F /* SwiftLCSDemo */,
-				1804B6651BCDE58000BD250F /* SwiftLCSTests */,
-				182E30CE1BD4F44A008EC94E /* SwiftLCS */,
+				1804B6651BCDE58000BD250F /* SwiftLCS Tests */,
+				182E30CE1BD4F44A008EC94E /* SwiftLCS iOS */,
+				18BCD0ED1D8B6FB700B6E4B5 /* SwiftLCS watchOS */,
+				18BCD0FD1D8B72F400B6E4B5 /* SwiftLCS tvOS */,
+				18BCD1101D8B752200B6E4B5 /* SwiftLCS OSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1804B6501BCDE57F00BD250F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1804B6601BCDE57F00BD250F /* LaunchScreen.storyboard in Resources */,
-				1804B65D1BCDE57F00BD250F /* Assets.xcassets in Resources */,
-				1804B65B1BCDE57F00BD250F /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1804B6641BCDE58000BD250F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,18 +342,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		1804B64E1BCDE57F00BD250F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		18BCD0EC1D8B6FB700B6E4B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1804B6581BCDE57F00BD250F /* ViewController.swift in Sources */,
-				1804B6561BCDE57F00BD250F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18BCD0FC1D8B72F400B6E4B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD10F1D8B752200B6E4B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		1804B6621BCDE58000BD250F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,39 +385,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18BCD0E91D8B6FB700B6E4B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BCD0F71D8B71C600B6E4B5 /* SwiftLCS.swift in Sources */,
+				18BCD0F81D8B71C600B6E4B5 /* SwiftLCS+Foundation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD0F91D8B72F400B6E4B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BCD1091D8B740200B6E4B5 /* SwiftLCS.swift in Sources */,
+				18BCD10A1D8B740200B6E4B5 /* SwiftLCS+Foundation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18BCD10C1D8B752200B6E4B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18BCD11A1D8B758200B6E4B5 /* SwiftLCS.swift in Sources */,
+				18BCD11B1D8B758400B6E4B5 /* SwiftLCS+Foundation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		182E30D51BD4F44A008EC94E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 182E30CE1BD4F44A008EC94E /* SwiftLCS */;
-			targetProxy = 182E30D41BD4F44A008EC94E /* PBXContainerItemProxy */;
-		};
 		182E30E01BD4F4FE008EC94E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 182E30CE1BD4F44A008EC94E /* SwiftLCS */;
+			target = 182E30CE1BD4F44A008EC94E /* SwiftLCS iOS */;
 			targetProxy = 182E30DF1BD4F4FE008EC94E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1804B6591BCDE57F00BD250F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1804B65A1BCDE57F00BD250F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1804B65E1BCDE57F00BD250F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1804B65F1BCDE57F00BD250F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1804B66D1BCDE58000BD250F /* Debug */ = {
@@ -447,40 +509,12 @@
 			};
 			name = Release;
 		};
-		1804B6701BCDE58000BD250F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = SwiftLCSDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tmadonia.SwiftLCSDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		1804B6711BCDE58000BD250F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = SwiftLCSDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tmadonia.SwiftLCSDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 		1804B6731BCDE58000BD250F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SwiftLCSTests/Info.plist;
+				INFOPLIST_FILE = "SwiftLCS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = it.tmadonia.SwiftLCSTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -489,9 +523,9 @@
 		1804B6741BCDE58000BD250F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = SwiftLCSTests/Info.plist;
+				INFOPLIST_FILE = "SwiftLCS Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = it.tmadonia.SwiftLCSTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -500,6 +534,7 @@
 		182E30D91BD4F44A008EC94E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -512,8 +547,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tmadonia.SwiftLCS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -526,6 +561,7 @@
 		182E30DA1BD4F44A008EC94E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -538,11 +574,184 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tmadonia.SwiftLCS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		18BCD0F41D8B6FB700B6E4B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftLCS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		18BCD0F51D8B6FB700B6E4B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftLCS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		18BCD1041D8B72F400B6E4B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "SwiftLCS/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		18BCD1051D8B72F400B6E4B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "SwiftLCS/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		18BCD1171D8B752300B6E4B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SwiftLCS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		18BCD1181D8B752300B6E4B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SwiftLCS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommasomadonia.SwiftLCS;
+				PRODUCT_NAME = SwiftLCS;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -560,16 +769,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1804B66F1BCDE58000BD250F /* Build configuration list for PBXNativeTarget "SwiftLCSDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1804B6701BCDE58000BD250F /* Debug */,
-				1804B6711BCDE58000BD250F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1804B6721BCDE58000BD250F /* Build configuration list for PBXNativeTarget "SwiftLCSTests" */ = {
+		1804B6721BCDE58000BD250F /* Build configuration list for PBXNativeTarget "SwiftLCS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1804B6731BCDE58000BD250F /* Debug */,
@@ -578,11 +778,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		182E30D81BD4F44A008EC94E /* Build configuration list for PBXNativeTarget "SwiftLCS" */ = {
+		182E30D81BD4F44A008EC94E /* Build configuration list for PBXNativeTarget "SwiftLCS iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				182E30D91BD4F44A008EC94E /* Debug */,
 				182E30DA1BD4F44A008EC94E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18BCD0F31D8B6FB700B6E4B5 /* Build configuration list for PBXNativeTarget "SwiftLCS watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18BCD0F41D8B6FB700B6E4B5 /* Debug */,
+				18BCD0F51D8B6FB700B6E4B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18BCD1031D8B72F400B6E4B5 /* Build configuration list for PBXNativeTarget "SwiftLCS tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18BCD1041D8B72F400B6E4B5 /* Debug */,
+				18BCD1051D8B72F400B6E4B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18BCD1161D8B752300B6E4B5 /* Build configuration list for PBXNativeTarget "SwiftLCS OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18BCD1171D8B752300B6E4B5 /* Debug */,
+				18BCD1181D8B752300B6E4B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
