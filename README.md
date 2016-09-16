@@ -1,4 +1,9 @@
-# SwiftLCS [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Pods](https://img.shields.io/cocoapods/v/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS) [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS) [![Pod documentation](https://img.shields.io/cocoapods/metrics/doc-percent/SwiftLCS.svg)](http://cocoadocs.org/docsets/SwiftLCS/)
+# SwiftLCS
+[![Build Status](https://travis-ci.org/Frugghi/SwiftLCS.svg?branch=master)](https://travis-ci.org/Frugghi/SwiftLCS)
+[![Pod documentation](https://img.shields.io/cocoapods/metrics/doc-percent/SwiftLCS.svg)](http://cocoadocs.org/docsets/SwiftLCS/)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Pods](https://img.shields.io/cocoapods/v/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS)
+[![Pod platforms](https://img.shields.io/cocoapods/p/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS)
 SwitLCS provides an extension of `Collection` that finds the indexes of the longest common subsequence with another collection.
 
 The **longest common subsequence** (LCS) problem is the problem of finding the longest subsequence common to all sequences in a set of sequences (often just two sequences). It differs from problems of finding common substrings: unlike substrings, subsequences are not required to occupy consecutive positions within the original sequences.
@@ -12,7 +17,6 @@ The project is based on the Objective-C implementation of [NSArray+LongestCommon
 
 Add this to your *Podfile*:
 ```Ruby
-platform :ios, '8.0'
 use_frameworks!
 
 pod 'SwiftLCS'
@@ -26,10 +30,29 @@ Add this to your *Cartfile*:
 github "Frugghi/SwiftLCS"
 ```
 
+### Swift Package Manager
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
+
+Add `SwiftLCS` to your *Package.swift* dependencies:
+```Swift
+import PackageDescription
+
+let package = Package(
+    dependencies: [
+        .Package(url: "https://github.com/Frugghi/SwiftLCS.git", majorVersion: 1, minor: 1)
+    ]
+)
+```
+
 ### Manual
 Include `SwiftLCS.swift` and *optionally* `SwiftLCS+Foundation.swift` to your project.
 
 ## Usage
+
+Import the framework:
+```Swift
+import SwiftLCS
+```
 
 ### String
 ```Swift

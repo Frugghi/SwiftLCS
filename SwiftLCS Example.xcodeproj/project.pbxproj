@@ -17,13 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18BCD1491D8B7E6D00B6E4B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18BCD1401D8B7E6C00B6E4B5 /* SwiftLCS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1804B6521BCDE57F00BD250F;
-			remoteInfo = SwiftLCSDemo;
-		};
 		18BCD14B1D8B7E6D00B6E4B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 18BCD1401D8B7E6C00B6E4B5 /* SwiftLCS.xcodeproj */;
@@ -145,8 +138,7 @@
 		18BCD1411D8B7E6C00B6E4B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18BCD14A1D8B7E6D00B6E4B5 /* SwiftLCSDemo.app */,
-				18BCD14C1D8B7E6D00B6E4B5 /* SwiftLCSTests.xctest */,
+				18BCD14C1D8B7E6D00B6E4B5 /* SwiftLCS Tests.xctest */,
 				18BCD14E1D8B7E6D00B6E4B5 /* SwiftLCS.framework */,
 				18BCD1501D8B7E6D00B6E4B5 /* SwiftLCS.framework */,
 				18BCD1521D8B7E6D00B6E4B5 /* SwiftLCS.framework */,
@@ -219,17 +211,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		18BCD14A1D8B7E6D00B6E4B5 /* SwiftLCSDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SwiftLCSDemo.app;
-			remoteRef = 18BCD1491D8B7E6D00B6E4B5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		18BCD14C1D8B7E6D00B6E4B5 /* SwiftLCSTests.xctest */ = {
+		18BCD14C1D8B7E6D00B6E4B5 /* SwiftLCS Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = SwiftLCSTests.xctest;
+			path = "SwiftLCS Tests.xctest";
 			remoteRef = 18BCD14B1D8B7E6D00B6E4B5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
