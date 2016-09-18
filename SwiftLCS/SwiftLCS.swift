@@ -60,9 +60,9 @@ public struct Diff<Index: Comparable> {
 }
 
 /**
-An extension of `CollectionType`, which calculates the diff between two collections.
+An extension of `Collection`, which calculates the diff between two collections.
 */
-public extension Collection where Iterator.Element: Equatable, Index: Comparable {
+public extension Collection where Iterator.Element: Equatable {
 
     /**
     Returns the diff between two collections.
@@ -129,9 +129,9 @@ public extension Collection where Iterator.Element: Equatable, Index: Comparable
 }
 
 /**
-An extension of `RangeReplaceableCollectionType`, which calculates the longest common subsequence between two collections.
+An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
 */
-public extension RangeReplaceableCollection where Iterator.Element: Equatable, Index: Comparable {
+public extension RangeReplaceableCollection where Iterator.Element: Equatable {
 
     /**
     Returns the longest common subsequence between two collections.

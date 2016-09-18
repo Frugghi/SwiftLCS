@@ -42,7 +42,6 @@ before_install:
 install:
   - .travis/install_swift.sh
 script:
-  - set -o pipefail
   - .travis/build.sh Debug "$SCHEME"
   - .travis/build.sh Release "$SCHEME"
   - .travis/build-example.sh Debug "$EXAMPLE_SCHEME"

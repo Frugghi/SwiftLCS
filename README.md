@@ -4,6 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pods](https://img.shields.io/cocoapods/v/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS)
 [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS)
+
 SwitLCS provides an extension of `Collection` that finds the indexes of the longest common subsequence with another collection.
 
 The **longest common subsequence** (LCS) problem is the problem of finding the longest subsequence common to all sequences in a set of sequences (often just two sequences). It differs from problems of finding common substrings: unlike substrings, subsequences are not required to occupy consecutive positions within the original sequences.
