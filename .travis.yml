@@ -15,7 +15,6 @@ env:
   - TVOS_SDK=appletvsimulator10.0
   - WATCHOS_SDK=watchsimulator3.0
   - EXAMPLE_SCHEME="SwiftLCS Example"
-  - SWIFT_VERSION=swift-3.0
   - SWIFTENV_ROOT="$HOME/.swiftenv"
   - PATH="$SWIFTENV_ROOT/bin:$SWIFTENV_ROOT/shims:$PATH"
 matrix:
