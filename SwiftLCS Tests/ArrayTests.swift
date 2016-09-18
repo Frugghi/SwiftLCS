@@ -54,6 +54,12 @@ class ArrayTests: XCTestCase {
         let new = [6, 7, 3, 4, 5]
         XCTAssertEqual(old.longestCommonSubsequence(new), [3, 4, 5])
     }
+    
+    func testContains() {
+        let old = [1, 2, 3, 4, 5]
+        let new = [6, 7, 1, 2, 3, 4, 5]
+        XCTAssertEqual(old.longestCommonSubsequence(new), [1, 2, 3, 4, 5])
+    }
 
     func testEqual() {
         let old = [1, 2, 3, 4, 5]
@@ -63,6 +69,13 @@ class ArrayTests: XCTestCase {
 
     func testEmpty() {
         let old = [1, 2, 3, 4, 5]
+        let new = [Int]()
+        XCTAssertEqual(old.longestCommonSubsequence(new), [Int]())
+        XCTAssertEqual(new.longestCommonSubsequence(old), [Int]())
+    }
+    
+    func testBothEmpty() {
+        let old = [Int]()
         let new = [Int]()
         XCTAssertEqual(old.longestCommonSubsequence(new), [Int]())
         XCTAssertEqual(new.longestCommonSubsequence(old), [Int]())

@@ -54,6 +54,12 @@ class StringTests: XCTestCase {
         let new = "fgcde"
         XCTAssertEqual(old.longestCommonSubsequence(new), "cde")
     }
+    
+    func testContains() {
+        let old = "abcde"
+        let new = "fgabcde"
+        XCTAssertEqual(old.longestCommonSubsequence(new), "abcde")
+    }
 
     func testEqual() {
         let old = "abcde"
@@ -68,6 +74,13 @@ class StringTests: XCTestCase {
         XCTAssertEqual(new.longestCommonSubsequence(old), "")
     }
 
+    func testBothEmpty() {
+        let old = ""
+        let new = ""
+        XCTAssertEqual(old.longestCommonSubsequence(new), "")
+        XCTAssertEqual(new.longestCommonSubsequence(old), "")
+    }
+    
     func testDifferentLengths() {
         let old = "abcdef"
         let new = "afgbc"

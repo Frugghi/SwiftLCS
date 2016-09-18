@@ -71,45 +71,11 @@ public extension Collection where Iterator.Element: Equatable {
     - parameter collection: The collection with which to compare the receiver.
     - returns: The diff between the receiver and the given collection.
     */
-    
     public func diff(_ otherCollection: Self) -> Diff<Index> {
-        let rows = Int(self.count.toIntMax()) + 1
-        let columns = Int(otherCollection.count.toIntMax()) + 1
-        var lengths = Array(repeating: Array(repeating: 0, count: columns), count: rows)
-        for (i, element) in self.enumerated().reversed() {
-            for (j, otherElement) in otherCollection.enumerated().reversed() {
-                if element == otherElement {
-                    lengths[i][j] = lengths[i+1][j+1] + 1
-                } else {
-                    lengths[i][j] =  [ lengths[i+1][j], lengths[i][j+1] ].max()!
-                }
-            }
-        }
+        let (suffix, suffixIndexes) = self.suffix(otherCollection)
+        let (_, prefixIndexes) = self.prefix(otherCollection, suffixLength: suffixIndexes.count)
 
-        var commonIndexes = [Index]()
-
-        var index = self.startIndex
-        var iterator = self.enumerated().makeIterator()
-        var otherIterator = otherCollection.enumerated().makeIterator()
-        
-        var entry = iterator.next()
-        var otherEntry = otherIterator.next()
-        while entry != nil && otherEntry != nil {
-            let i = entry!.offset
-            let j = otherEntry!.offset
-            
-            if entry!.element == otherEntry!.element {
-                commonIndexes.append(index)
-                index = self.index(after: index)
-                entry = iterator.next()
-                otherEntry = otherIterator.next()
-            } else if lengths[i+1][j] >= lengths[i][j+1] {
-                index = self.index(after: index)
-                entry = iterator.next()
-            } else {
-                otherEntry = otherIterator.next()
-            }
-        }
+        let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, endIndex: suffix, prefixLength: prefixIndexes.count, suffixLength: suffixIndexes.count) + suffixIndexes
         
         let removedIndexes = self.map { self.index(of: $0)! }.filter { !commonIndexes.contains($0) }
 
@@ -125,6 +91,74 @@ public extension Collection where Iterator.Element: Equatable {
 
         return Diff(common: (commonIndexes, self), added: (addedIndexes, otherCollection), removed: (removedIndexes, self))
     }
+    
+    // MARK: - Private
+    
+    fileprivate func prefix(_ otherCollection: Self, suffixLength: Int) -> (Index, [Index]) {
+        var iterator = (self.dropLast(suffixLength).makeIterator(), otherCollection.dropLast(suffixLength).makeIterator())
+        var entry = (iterator.0.next(), iterator.1.next())
+        
+        var prefixIndexes = [Index]()
+        var prefix = self.startIndex
+        while entry.0 != nil && entry.1 != nil && entry.0 as! Iterator.Element == entry.1 as! Iterator.Element {
+            prefixIndexes.append(prefix)
+            prefix = self.index(after: prefix)
+            
+            entry = (iterator.0.next(), iterator.1.next())
+        }
+        
+        return (prefix, prefixIndexes)
+    }
+    
+    fileprivate func suffix(_ otherCollection: Self) -> (Index, [Index]) {
+        var iterator = (self.reversed().makeIterator(), otherCollection.reversed().makeIterator())
+        var entry = (iterator.0.next(), iterator.1.next())
+        
+        var suffixIndexes = [Index]()
+        var suffix = self.endIndex
+        while entry.0 != nil && entry.1 != nil && entry.0! == entry.1! {
+            suffix = self.index(suffix, offsetBy: -1)
+            suffixIndexes.append(suffix)
+            
+            entry = (iterator.0.next(), iterator.1.next())
+        }
+        
+        return (suffix, suffixIndexes.reversed())
+    }
+    
+    fileprivate func computeLCS(_ otherCollection: Self, endIndex: Index, prefixLength: Int, suffixLength: Int) -> [Index] {
+        let rows = Int(self.count.toIntMax()) - prefixLength - suffixLength + 1
+        let columns = Int(otherCollection.count.toIntMax()) - prefixLength - suffixLength + 1
+        var lengths = Array(repeating: Array(repeating: 0, count: columns), count: rows)
+        for (i, element) in self.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
+            for (j, otherElement) in otherCollection.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
+                if element == otherElement {
+                    lengths[i+1][j+1] = lengths[i][j] + 1
+                } else {
+                    lengths[i+1][j+1] =  [ lengths[i+1][j], lengths[i][j+1] ].max()!
+                }
+            }
+        }
+        
+        var commonIndexes = [Index]()
+        
+        var index = endIndex
+        var (i, j) = (rows - 1, columns - 1)
+        while i != 0 && j != 0 {
+            if lengths[i][j] == lengths[i - 1][j] {
+                i -= 1
+                index = self.index(index, offsetBy: -1)
+            } else if lengths[i][j] == lengths[i][j - 1] {
+                j -= 1
+            } else {
+                index = self.index(index, offsetBy: -1)
+                commonIndexes.append(index)
+                (i, j) = (i - 1, j - 1)
+            }
+        }
+        
+        return commonIndexes.reversed()
+    }
 
 }
 
@@ -139,7 +173,6 @@ public extension RangeReplaceableCollection where Iterator.Element: Equatable {
     - parameter collection: The collection with which to compare the receiver.
     - returns: The longest common subsequence between the receiver and the given collection.
     */
-    
     public func longestCommonSubsequence(_ collection: Self) -> Self {
         return Self(self.diff(collection).commonIndexes.map { self[$0] })
     }
@@ -157,7 +190,6 @@ public extension String {
     - parameter string: The string with which to compare the receiver.
     - returns: The longest common subsequence between the receiver and the given string.
     */
-    
     public func longestCommonSubsequence(_ string: String) -> String {
         return String(self.characters.longestCommonSubsequence(string.characters))
     }

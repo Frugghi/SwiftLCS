@@ -75,6 +75,19 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
         XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
+    
+    func testContains() {
+        let old = [1, 2, 3, 4, 5]
+        let new = [6, 7, 1, 2, 3, 4, 5]
+        let diff = old.diff(new)
+        
+        XCTAssertEqual(diff.commonIndexes, [0, 1, 2, 3, 4])
+        XCTAssertEqual(diff.addedIndexes, [0, 1])
+        XCTAssertEqual(diff.removedIndexes, [])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
+    }
 
     func testEqual() {
         let old = [1, 2, 3, 4, 5]
