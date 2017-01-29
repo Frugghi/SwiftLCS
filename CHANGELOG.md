@@ -1,5 +1,12 @@
 # Changelog
 
+# 1.1 (2016-09-18)
+- Support for Swift 3
+- Increased performances
+
+# 1.0.1 (2016-04-25)
+- Fixed Swift 3 warnings
+
 # 1.0 (2015-10-19)
 
 #### CollectionType extension:
