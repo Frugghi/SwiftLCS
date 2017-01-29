@@ -11,7 +11,7 @@ The **longest common subsequence** (LCS) problem is the problem of finding the l
 
 The project is based on the Objective-C implementation of [NSArray+LongestCommonSubsequence](https://github.com/khanlou/NSArray-LongestCommonSubsequence).
 
-## Installation
+## :package: Installation
 
 ### CocoaPods
 [CocoaPods](https://cocoapods.org) is the dependency manager for Swift and Objective-C Cocoa projects. It has over ten thousand libraries and can help you scale your projects elegantly.
@@ -48,8 +48,10 @@ let package = Package(
 ### Manual
 Include `SwiftLCS.swift` and *optionally* `SwiftLCS+Foundation.swift` to your project.
 
-## Usage
+## :book: Documentation
+The API documentation is available [here](http://cocoadocs.org/docsets/SwiftLCS/).
 
+## :computer: Usage
 Import the framework:
 ```Swift
 import SwiftLCS
@@ -82,8 +84,8 @@ let diff = x.diff(y)
 // diff.removedIndexes: [0, 2, 4, 6]
 ```
 
-## Documentation
-The API documentation is available [here](http://cocoadocs.org/docsets/SwiftLCS/).
+## :warning: Objective-C
+[Object comparison](https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/ObjectComparison.html) of Objective-C objects is done through the `isEquals:` method, so be sure that the implementations is correct otherwise `SwiftLCS` will not return the correct indexes.
 
-## License [![LICENSE](https://img.shields.io/cocoapods/l/SwiftLCS.svg)](https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE)
+## :page_facing_up: License [![LICENSE](https://img.shields.io/cocoapods/l/SwiftLCS.svg)](https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE)
 *SwiftLCS* is released under the MIT license. See [LICENSE](https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE) for details.
