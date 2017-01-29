@@ -59,6 +59,8 @@ public struct Diff<Index: Comparable> {
     
 }
 
+// MARK: -
+
 /**
 An extension of `Collection`, which calculates the diff between two collections.
 */
@@ -92,7 +94,7 @@ public extension Collection where Iterator.Element: Equatable {
         return Diff(common: (commonIndexes, self), added: (addedIndexes, otherCollection), removed: (removedIndexes, self))
     }
     
-    // MARK: - Private
+    // MARK: Private functions
     
     fileprivate func prefix(_ otherCollection: Self, suffixLength: Int) -> (Index, [Index]) {
         var iterator = (self.dropLast(suffixLength).makeIterator(), otherCollection.dropLast(suffixLength).makeIterator())
@@ -100,7 +102,7 @@ public extension Collection where Iterator.Element: Equatable {
         
         var prefixIndexes = [Index]()
         var prefix = self.startIndex
-        while entry.0 != nil && entry.1 != nil && entry.0 as! Iterator.Element == entry.1 as! Iterator.Element {
+        while let lhs = entry.0 as? Iterator.Element, let rhs = entry.1 as? Iterator.Element, lhs == rhs {
             prefixIndexes.append(prefix)
             prefix = self.index(after: prefix)
             
@@ -116,7 +118,7 @@ public extension Collection where Iterator.Element: Equatable {
         
         var suffixIndexes = [Index]()
         var suffix = self.endIndex
-        while entry.0 != nil && entry.1 != nil && entry.0! == entry.1! {
+        while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
             suffix = self.index(suffix, offsetBy: -1)
             suffixIndexes.append(suffix)
             
@@ -135,7 +137,7 @@ public extension Collection where Iterator.Element: Equatable {
                 if element == otherElement {
                     lengths[i+1][j+1] = lengths[i][j] + 1
                 } else {
-                    lengths[i+1][j+1] =  [ lengths[i+1][j], lengths[i][j+1] ].max()!
+                    lengths[i+1][j+1] = Swift.max(lengths[i+1][j], lengths[i][j+1])
                 }
             }
         }
@@ -162,6 +164,8 @@ public extension Collection where Iterator.Element: Equatable {
 
 }
 
+// MARK: -
+
 /**
 An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
 */
@@ -178,6 +182,8 @@ public extension RangeReplaceableCollection where Iterator.Element: Equatable {
     }
 
 }
+
+// MARK: -
 
 /**
 An extension of `String`, which calculates the longest common subsequence between two strings.
