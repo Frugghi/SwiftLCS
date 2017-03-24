@@ -141,6 +141,45 @@ class IndexTests: XCTestCase {
         XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
     }
     
+    func testAddMultipleCopiesStart() {
+        let old = [0, 1, 2]
+        let new = [3, 3, 0, 1, 2]
+        let diff = old.diff(new)
+        
+        XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
+        XCTAssertEqual(diff.addedIndexes, [0, 1])
+        XCTAssertEqual(diff.removedIndexes, [])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
+    }
+    
+    func testAddMultipleCopies() {
+        let old = [0, 1, 2]
+        let new = [3, 0, 3, 2, 3]
+        let diff = old.diff(new)
+        
+        XCTAssertEqual(diff.commonIndexes, [0, 2])
+        XCTAssertEqual(diff.addedIndexes, [0, 2, 4])
+        XCTAssertEqual(diff.removedIndexes, [1])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
+    }
+    
+    func testAddMultipleCopiesEnd() {
+        let old = [0, 1, 2]
+        let new = [0, 1, 2, 3, 3]
+        let diff = old.diff(new)
+        
+        XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
+        XCTAssertEqual(diff.addedIndexes, [3, 4])
+        XCTAssertEqual(diff.removedIndexes, [])
+        
+        XCTAssertEqual(diff.commonIndexes.count + diff.removedIndexes.count, old.count)
+        XCTAssertEqual(diff.commonIndexes.count + diff.addedIndexes.count, new.count)
+    }
+    
     func testNSIndexSet() {
         let old = [1, 2, 3, 4, 5, 6, 7]
         let new = [8, 9, 2, 10, 4, 11, 6, 12]

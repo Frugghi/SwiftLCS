@@ -78,16 +78,16 @@ public extension Collection where Iterator.Element: Equatable {
         let (_, prefixIndexes) = self.prefix(otherCollection, suffixLength: suffixIndexes.count)
 
         let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, endIndex: suffix, prefixLength: prefixIndexes.count, suffixLength: suffixIndexes.count) + suffixIndexes
-        
-        let removedIndexes = self.map { self.index(of: $0)! }.filter { !commonIndexes.contains($0) }
+
+        let removedIndexes = self.indices().filter { !commonIndexes.contains($0) }
 
         var addedIndexes = [Index]()
-        var commonObjects = self.filter { commonIndexes.contains(self.index(of: $0)!) }
-        for value in otherCollection {
+        var commonObjects = self.indices().filter { commonIndexes.contains($0) }.map { self[$0] }
+        for (index, value) in zip(otherCollection.indices(), otherCollection) {
             if commonObjects.first == value {
                 commonObjects.removeFirst()
             } else {
-                addedIndexes.append(otherCollection.index(of: value)!)
+                addedIndexes.append(index)
             }
         }
 
@@ -95,6 +95,17 @@ public extension Collection where Iterator.Element: Equatable {
     }
     
     // MARK: Private functions
+    
+    fileprivate func indices() -> [Index] {
+        var indices = [Index]()
+        var index = self.startIndex
+        while index != self.endIndex {
+            indices.append(index)
+            index = self.index(after: index)
+        }
+        
+        return indices
+    }
     
     fileprivate func prefix(_ otherCollection: Self, suffixLength: Int) -> (Index, [Index]) {
         var iterator = (self.dropLast(suffixLength).makeIterator(), otherCollection.dropLast(suffixLength).makeIterator())
