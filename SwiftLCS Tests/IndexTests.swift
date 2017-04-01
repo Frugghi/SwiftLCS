@@ -40,7 +40,7 @@ class IndexTests: XCTestCase {
     func testSimple() {
         let old = [1, 2, 3, 4, 5, 6, 7]
         let new = [8, 9, 2, 10, 4, 11, 6, 12]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
 
         XCTAssertEqual(diff.commonIndexes, [1, 3, 5])
         XCTAssertEqual(diff.addedIndexes, [0, 1, 3, 5, 7])
@@ -53,7 +53,7 @@ class IndexTests: XCTestCase {
     func testPrefix() {
         let old = [1, 2, 3, 4, 5]
         let new = [1, 2, 3, 6, 7]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
 
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
         XCTAssertEqual(diff.addedIndexes, [3, 4])
@@ -66,7 +66,7 @@ class IndexTests: XCTestCase {
     func testSuffix() {
         let old = [1, 2, 3, 4, 5]
         let new = [6, 7, 3, 4, 5]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
 
         XCTAssertEqual(diff.commonIndexes, [2, 3, 4])
         XCTAssertEqual(diff.addedIndexes, [0, 1])
@@ -79,7 +79,7 @@ class IndexTests: XCTestCase {
     func testContains() {
         let old = [1, 2, 3, 4, 5]
         let new = [6, 7, 1, 2, 3, 4, 5]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
         
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2, 3, 4])
         XCTAssertEqual(diff.addedIndexes, [0, 1])
@@ -92,7 +92,7 @@ class IndexTests: XCTestCase {
     func testEqual() {
         let old = [1, 2, 3, 4, 5]
         let new = [1, 2, 3, 4, 5]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
 
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2, 3, 4])
         XCTAssertEqual(diff.addedIndexes, [])
@@ -105,7 +105,7 @@ class IndexTests: XCTestCase {
     func testEmpty() {
         let old = [1, 2, 3, 4, 5]
         let new = [Int]()
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
 
         XCTAssertEqual(diff.commonIndexes, [])
         XCTAssertEqual(diff.addedIndexes, [])
@@ -118,7 +118,7 @@ class IndexTests: XCTestCase {
     func testBothEmpty() {
         let old = [Int]()
         let new = [Int]()
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
         
         XCTAssertEqual(diff.commonIndexes, [])
         XCTAssertEqual(diff.addedIndexes, [])
@@ -131,7 +131,7 @@ class IndexTests: XCTestCase {
     func testDifferentLengths() {
         let old = [1, 2, 3, 4, 5, 6]
         let new = [1, 6, 7, 2, 3]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
 
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
         XCTAssertEqual(diff.addedIndexes, [1, 2])
@@ -144,7 +144,7 @@ class IndexTests: XCTestCase {
     func testAddMultipleCopiesStart() {
         let old = [0, 1, 2]
         let new = [3, 3, 0, 1, 2]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
         
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
         XCTAssertEqual(diff.addedIndexes, [0, 1])
@@ -157,7 +157,7 @@ class IndexTests: XCTestCase {
     func testAddMultipleCopies() {
         let old = [0, 1, 2]
         let new = [3, 0, 3, 2, 3]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
         
         XCTAssertEqual(diff.commonIndexes, [0, 2])
         XCTAssertEqual(diff.addedIndexes, [0, 2, 4])
@@ -170,7 +170,7 @@ class IndexTests: XCTestCase {
     func testAddMultipleCopiesEnd() {
         let old = [0, 1, 2]
         let new = [0, 1, 2, 3, 3]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
         
         XCTAssertEqual(diff.commonIndexes, [0, 1, 2])
         XCTAssertEqual(diff.addedIndexes, [3, 4])
@@ -183,7 +183,7 @@ class IndexTests: XCTestCase {
     func testNSIndexSet() {
         let old = [1, 2, 3, 4, 5, 6, 7]
         let new = [8, 9, 2, 10, 4, 11, 6, 12]
-        let diff = old.diff(new)
+        let diff = Diff(old, new)
         
         let commonIndexSet = IndexSet([1, 3, 5])
         XCTAssertEqual(diff.commonIndexSet, commonIndexSet)

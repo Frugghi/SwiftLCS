@@ -81,6 +81,13 @@ class StringTests: XCTestCase {
         XCTAssertEqual(new.longestCommonSubsequence(old), "")
     }
     
+    func testBothSingle() {
+        let old = "a"
+        let new = "a"
+        XCTAssertEqual(old.longestCommonSubsequence(new), "a")
+        XCTAssertEqual(new.longestCommonSubsequence(old), "a")
+    }
+    
     func testDifferentLengths() {
         let old = "abcdef"
         let new = "afgbc"
