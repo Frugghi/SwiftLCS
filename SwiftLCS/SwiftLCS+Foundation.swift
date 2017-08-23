@@ -29,19 +29,24 @@ An extension of `Diff`, which adds support for `Foundation` types such as `Index
 */
 public extension Diff where Index: Strideable, Index.Stride: SignedInteger {
     
-    /// The indexes whose corresponding values in the old collection are in the LCS.
+    /// The indexes whose corresponding values in the old collection are in the LCS (have same identity).
     public var commonIndexSet: IndexSet {
-        return self.toIndexSet(self.common)
+        return toIndexSet(common)
+    }
+    
+    /// The indexes whose corresponding values in the new collection are updated (have same identity, but different content) against old collection.
+    public var updatedIndexSet: IndexSet {
+        return toIndexSet(updated)
     }
     
     /// The indexes whose corresponding values in the new collection are not in the LCS.
     public var addedIndexSet: IndexSet {
-        return self.toIndexSet(self.added)
+        return toIndexSet(added)
     }
     
     /// The indexes whose corresponding values in the old collection are not in the LCS.
     public var removedIndexSet: IndexSet {
-        return self.toIndexSet(self.removed)
+        return toIndexSet(removed)
     }
     
     // MARK: - Private
