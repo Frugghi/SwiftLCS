@@ -23,40 +23,69 @@
 //
 
 /**
+ A protocol that requires methods for items comparison in `Diff`.
+ 
+ Because not everything is build equal, this protocol replaces `Equatable`
+ protocol used in [original implementation](https://github.com/Frugghi/SwiftLCS) to
+ gain extended `Diff` with `updatedIndexes`.
+ */
+public protocol Diffable {
+    /// Returns true if given item has **same identity** as this instance.
+    ///
+    /// - Note: If true is returned, given item may not equals to this instance,
+    /// because of content of these two instances may not be equal.
+    ///
+    func isIdentityEqual(to item: Self) -> Bool
+    
+    /// Returns true if given item has **same content** as this instance.
+    ///
+    /// - Attention: Result of `self.isIdentityEqual(to: item)` must return `true`.
+    /// If return value is false it will lead to unexpected behaviour.
+    ///
+    func isContentEqual(to item: Self) -> Bool
+}
+
+/**
 A generic struct that represents a diff between two collections.
 */
 public struct Diff<Index: Comparable> {
     
-    /// The indexes whose corresponding values in the old collection are in the LCS.
+    /// The indexes whose corresponding values in the old collection are in the LCS (have same identity).
     public var commonIndexes: [Index] {
-        return self.common.indexes
+        return common.indexes
+    }
+    
+    /// The indexes whose corresponding values in the new collection are updated (have same identity, but different content) against old collection.
+    public var updatedIndexes: [Index] {
+        return updated.indexes
     }
     
     /// The indexes whose corresponding values in the new collection are not in the LCS.
     public var addedIndexes: [Index] {
-        return self.added.indexes
+        return added.indexes
     }
     
     /// The indexes whose corresponding values in the old collection are not in the LCS.
     public var removedIndexes: [Index] {
-        return self.removed.indexes
+        return removed.indexes
     }
     
     internal let common: (indexes: [Index], startIndex: Index)
+    internal let updated: (indexes: [Index], startIndex: Index)
     internal let added: (indexes: [Index], startIndex: Index)
     internal let removed: (indexes: [Index], startIndex: Index)
     
     /// Construct the `Diff` between two given collections.
-    public init<C: Collection>(_ old: C, _ new: C) where C.Index == Index, C.Iterator.Element: Equatable {
+    public init<C: Collection>(_ old: C, _ new: C) where C.Index == Index, C.Iterator.Element: Diffable {
         self = old.diff(new)
     }
     
-    fileprivate init<C: Collection>(common: ([Index], C), added: ([Index], C), removed: ([Index], C)) where C.Index == Index {
+    fileprivate init<C: Collection>(common: ([Index], C), updated: ([Index], C), added: ([Index], C), removed: ([Index], C)) where C.Index == Index {
         self.common = (indexes: common.0, startIndex: common.1.startIndex)
+        self.updated = (indexes: updated.0, startIndex: updated.1.startIndex)
         self.added = (indexes: added.0, startIndex: added.1.startIndex)
         self.removed = (indexes: removed.0, startIndex: removed.1.startIndex)
     }
-    
 }
 
 // MARK: -
@@ -64,7 +93,7 @@ public struct Diff<Index: Comparable> {
 /**
 An extension of `Collection`, which calculates the diff between two collections.
 */
-public extension Collection where Iterator.Element: Equatable {
+public extension Collection where Iterator.Element: Diffable {
 
     /**
     Returns the diff between two collections.
@@ -77,21 +106,26 @@ public extension Collection where Iterator.Element: Equatable {
         let (suffix, suffixIndexes) = self.suffix(otherCollection)
         let (_, prefixIndexes) = self.prefix(otherCollection, suffixLength: suffixIndexes.count)
 
-        let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, endIndex: suffix, prefixLength: prefixIndexes.count, suffixLength: suffixIndexes.count) + suffixIndexes
-
-        let removedIndexes = self.indices().filter { !commonIndexes.contains($0) }
-
+        let commonAndUpdatedIndexes = prefixIndexes + self.computeLCS(otherCollection, endIndex: suffix, prefixLength: prefixIndexes.count, suffixLength: suffixIndexes.count) + suffixIndexes
+        let removedIndexes = self.indices().filter { !commonAndUpdatedIndexes.contains($0) }
         var addedIndexes = [Index]()
-        var commonObjects = self.indices().filter { commonIndexes.contains($0) }.map { self[$0] }
+        var updatedIndexes = [Index]()
+        
+        var commonObjects: [(idx: Self.Index, obj: Self.Iterator.Element)] = self.indices().filter { commonAndUpdatedIndexes.contains($0) }.map { ($0, self[$0]) }
         for (index, value) in zip(otherCollection.indices(), otherCollection) {
-            if commonObjects.first == value {
+            if let common = commonObjects.first, common.obj.isIdentityEqual(to: value) {
+                if !common.obj.isContentEqual(to: value) {
+                    updatedIndexes.append(common.idx)
+                }
                 commonObjects.removeFirst()
             } else {
                 addedIndexes.append(index)
             }
         }
-
-        return Diff(common: (commonIndexes, self), added: (addedIndexes, otherCollection), removed: (removedIndexes, self))
+        
+        let commonIndexes = commonAndUpdatedIndexes.filter { !updatedIndexes.contains($0) }
+        
+        return Diff(common: (commonIndexes, self), updated: (updatedIndexes, self), added: (addedIndexes, otherCollection), removed: (removedIndexes, self))
     }
     
     // MARK: Private functions
@@ -113,7 +147,7 @@ public extension Collection where Iterator.Element: Equatable {
         
         var prefixIndexes = [Index]()
         var prefix = self.startIndex
-        while let lhs = entry.0 as? Iterator.Element, let rhs = entry.1 as? Iterator.Element, lhs == rhs {
+        while let lhs = entry.0 as? Iterator.Element, let rhs = entry.1 as? Iterator.Element, lhs.isIdentityEqual(to: rhs) {
             prefixIndexes.append(prefix)
             prefix = self.index(after: prefix)
             
@@ -129,7 +163,7 @@ public extension Collection where Iterator.Element: Equatable {
         
         var suffixIndexes = [Index]()
         var suffix = self.endIndex
-        while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
+        while let lhs = entry.0, let rhs = entry.1, lhs.isIdentityEqual(to: rhs) {
             suffix = self.index(suffix, offsetBy: -1)
             suffixIndexes.append(suffix)
             
@@ -145,7 +179,7 @@ public extension Collection where Iterator.Element: Equatable {
         var lengths = Array(repeating: Array(repeating: 0, count: columns), count: rows)
         for (i, element) in self.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
             for (j, otherElement) in otherCollection.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
-                if element == otherElement {
+                if element.isIdentityEqual(to: otherElement) {
                     lengths[i+1][j+1] = lengths[i][j] + 1
                 } else {
                     lengths[i+1][j+1] = Swift.max(lengths[i+1][j], lengths[i][j+1])
@@ -180,7 +214,7 @@ public extension Collection where Iterator.Element: Equatable {
 /**
 An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
 */
-public extension RangeReplaceableCollection where Iterator.Element: Equatable {
+public extension RangeReplaceableCollection where Iterator.Element: Diffable {
 
     /**
     Returns the longest common subsequence between two collections.
@@ -194,7 +228,27 @@ public extension RangeReplaceableCollection where Iterator.Element: Equatable {
 
 }
 
-// MARK: -
+// MARK: - 
+
+extension Character: Diffable {
+    public func isIdentityEqual(to item: Character) -> Bool {
+        return String(self).lowercased() == String(item).lowercased()
+    }
+    
+    public func isContentEqual(to item: Character) -> Bool {
+        return String(self) == String(item)
+    }
+}
+
+extension String: Diffable {
+    public func isIdentityEqual(to item: String) -> Bool {
+        return self.lowercased() == item.lowercased()
+    }
+    
+    public func isContentEqual(to item: String) -> Bool {
+        return self == item
+    }
+}
 
 /**
 An extension of `String`, which calculates the longest common subsequence between two strings.
