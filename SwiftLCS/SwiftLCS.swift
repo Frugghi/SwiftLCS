@@ -140,8 +140,8 @@ public extension Collection where Iterator.Element: Equatable {
     }
     
     fileprivate func computeLCS(_ otherCollection: Self, endIndex: Index, prefixLength: Int, suffixLength: Int) -> [Index] {
-        let rows = Int(self.count.toIntMax()) - prefixLength - suffixLength + 1
-        let columns = Int(otherCollection.count.toIntMax()) - prefixLength - suffixLength + 1
+        let rows = Int(Int64(self.count)) - prefixLength - suffixLength + 1
+        let columns = Int(Int64(otherCollection.count)) - prefixLength - suffixLength + 1
         var lengths = Array(repeating: Array(repeating: 0, count: columns), count: rows)
         for (i, element) in self.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
             for (j, otherElement) in otherCollection.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
