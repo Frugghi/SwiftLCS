@@ -113,7 +113,7 @@ public extension Collection where Iterator.Element: Equatable {
         
         var prefixIndexes = [Index]()
         var prefix = self.startIndex
-        while let lhs = entry.0 as? Iterator.Element, let rhs = entry.1 as? Iterator.Element, lhs == rhs {
+        while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
             prefixIndexes.append(prefix)
             prefix = self.index(after: prefix)
             
