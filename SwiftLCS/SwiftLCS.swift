@@ -193,22 +193,3 @@ public extension RangeReplaceableCollection where Iterator.Element: Equatable {
     }
 
 }
-
-// MARK: -
-
-/**
-An extension of `String`, which calculates the longest common subsequence between two strings.
-*/
-public extension String {
-
-    /**
-    Returns the longest common subsequence between two strings.
-    
-    - parameter string: The string with which to compare the receiver.
-    - returns: The longest common subsequence between the receiver and the given string.
-    */
-    public func longestCommonSubsequence(_ string: String) -> String {
-        return String(self.characters.longestCommonSubsequence(string.characters))
-    }
-
-}
