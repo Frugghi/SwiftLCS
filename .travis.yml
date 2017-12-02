@@ -28,7 +28,7 @@ matrix:
     - os: osx
       env: DESTINATION="OS=8.1,name=iPhone 5"           SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="NO"  BUILD_EXAMPLE="NO"
     - os: osx
-      env: DESTINATION="OS=11.1,name=Apple TV 1080p"    SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="NO"  BUILD_EXAMPLE="NO"
+      env: DESTINATION="OS=11.1,name=Apple TV 4K"    SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="NO"  BUILD_EXAMPLE="NO"
     - os: osx
       env: DESTINATION="OS=9.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="NO"  BUILD_EXAMPLE="NO"
     - os: osx
@@ -41,6 +41,6 @@ before_install:
 install:
   - .travis/install_swift.sh
 script:
-  - .travis/build.sh Debug "$SCHEME"
-  - .travis/build.sh Release "$SCHEME"
-  - .travis/build-example.sh Debug "$EXAMPLE_SCHEME"
+  - .travis/build.sh debug "$SCHEME"
+  - .travis/build.sh release "$SCHEME"
+  - .travis/build-example.sh debug "$EXAMPLE_SCHEME"
