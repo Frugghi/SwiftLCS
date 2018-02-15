@@ -47,7 +47,7 @@ public extension Diff where Index: Strideable, Index.Stride: SignedInteger {
     // MARK: - Private
     
     fileprivate func toIndexSet(_ diff: (indexes: [Index], startIndex: Index)) -> IndexSet {
-        let indexes = diff.indexes.map { Int(Int64((diff.startIndex..<$0).count)) }
+        let indexes = diff.indexes.map { Int((diff.startIndex..<$0).count) }
         
         return IndexSet(indexes)
     }

@@ -79,39 +79,47 @@ public extension Collection where Iterator.Element: Equatable {
 
         let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, endIndex: suffix, prefixLength: prefixIndexes.count, suffixLength: suffixIndexes.count) + suffixIndexes
 
-        let removedIndexes = self.indices().filter { !commonIndexes.contains($0) }
-
-        var addedIndexes = [Index]()
-        var commonObjects = self.indices().filter { commonIndexes.contains($0) }.map { self[$0] }
-        for (index, value) in zip(otherCollection.indices(), otherCollection) {
-            if commonObjects.first == value {
-                commonObjects.removeFirst()
+        var removedIndexes: [Index] = []
+        var addedIndexes: [Index] = []
+        
+        var index = self.startIndex
+        var otherIndex = otherCollection.startIndex
+        var commonIndexesIterator = commonIndexes.makeIterator()
+        var commonIndex = commonIndexesIterator.next()
+        while index != self.endIndex {
+            if commonIndex == index {
+                commonIndex = commonIndexesIterator.next()
+                
+                while otherIndex != otherCollection.endIndex && otherCollection[otherIndex] != self[index] {
+                    addedIndexes.append(otherIndex)
+                    otherIndex = otherCollection.index(after: otherIndex)
+                }
+                
+                if otherIndex != otherCollection.endIndex {
+                    otherIndex = otherCollection.index(after: otherIndex)
+                }
             } else {
-                addedIndexes.append(index)
+                removedIndexes.append(index)
             }
+            
+            index = self.index(after: index)
         }
-
+        
+        while otherIndex != otherCollection.endIndex {
+            addedIndexes.append(otherIndex)
+            otherIndex = otherCollection.index(after: otherIndex)
+        }
+        
         return Diff(common: (commonIndexes, self), added: (addedIndexes, otherCollection), removed: (removedIndexes, self))
     }
     
     // MARK: Private functions
     
-    fileprivate func indices() -> [Index] {
-        var indices = [Index]()
-        var index = self.startIndex
-        while index != self.endIndex {
-            indices.append(index)
-            index = self.index(after: index)
-        }
-        
-        return indices
-    }
-    
-    fileprivate func prefix(_ otherCollection: Self, suffixLength: Int) -> (Index, [Index]) {
+    private func prefix(_ otherCollection: Self, suffixLength: Int) -> (Index, [Index]) {
         var iterator = (self.dropLast(suffixLength).makeIterator(), otherCollection.dropLast(suffixLength).makeIterator())
         var entry = (iterator.0.next(), iterator.1.next())
         
-        var prefixIndexes = [Index]()
+        var prefixIndexes: [Index] = []
         var prefix = self.startIndex
         while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
             prefixIndexes.append(prefix)
@@ -123,11 +131,11 @@ public extension Collection where Iterator.Element: Equatable {
         return (prefix, prefixIndexes)
     }
     
-    fileprivate func suffix(_ otherCollection: Self) -> (Index, [Index]) {
+    private func suffix(_ otherCollection: Self) -> (Index, [Index]) {
         var iterator = (self.reversed().makeIterator(), otherCollection.reversed().makeIterator())
         var entry = (iterator.0.next(), iterator.1.next())
         
-        var suffixIndexes = [Index]()
+        var suffixIndexes: [Index] = []
         var suffix = self.endIndex
         while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
             suffix = self.index(suffix, offsetBy: -1)
@@ -139,7 +147,7 @@ public extension Collection where Iterator.Element: Equatable {
         return (suffix, suffixIndexes.reversed())
     }
     
-    fileprivate func computeLCS(_ otherCollection: Self, endIndex: Index, prefixLength: Int, suffixLength: Int) -> [Index] {
+    private func computeLCS(_ otherCollection: Self, endIndex: Index, prefixLength: Int, suffixLength: Int) -> [Index] {
         let rows = Int(Int64(self.count)) - prefixLength - suffixLength + 1
         let columns = Int(Int64(otherCollection.count)) - prefixLength - suffixLength + 1
         var lengths = Array(repeating: Array(repeating: 0, count: columns), count: rows)
@@ -153,7 +161,7 @@ public extension Collection where Iterator.Element: Equatable {
             }
         }
         
-        var commonIndexes = [Index]()
+        var commonIndexes: [Index] = []
         
         var index = endIndex
         var (i, j) = (rows - 1, columns - 1)
