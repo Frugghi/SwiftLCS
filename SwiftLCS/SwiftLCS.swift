@@ -22,39 +22,85 @@
 // SOFTWARE.
 //
 
+import Foundation
+
 /**
 A generic struct that represents a diff between two collections.
 */
-public struct Diff<Index: Comparable> {
+public struct Diff<Index> {
     
     /// The indexes whose corresponding values in the old collection are in the LCS.
     public var commonIndexes: [Index] {
-        return self.common.indexes
+        return self._commonIndexSet.indexes
     }
     
     /// The indexes whose corresponding values in the new collection are not in the LCS.
     public var addedIndexes: [Index] {
-        return self.added.indexes
+        return self._addedIndexSet.indexes
     }
     
     /// The indexes whose corresponding values in the old collection are not in the LCS.
     public var removedIndexes: [Index] {
-        return self.removed.indexes
+        return self._removedIndexSet.indexes
     }
-    
-    internal let common: (indexes: [Index], startIndex: Index)
-    internal let added: (indexes: [Index], startIndex: Index)
-    internal let removed: (indexes: [Index], startIndex: Index)
     
     /// Construct the `Diff` between two given collections.
     public init<C: Collection>(_ old: C, _ new: C) where C.Index == Index, C.Iterator.Element: Equatable {
         self = old.diff(new)
     }
     
-    fileprivate init<C: Collection>(common: ([Index], C), added: ([Index], C), removed: ([Index], C)) where C.Index == Index {
-        self.common = (indexes: common.0, startIndex: common.1.startIndex)
-        self.added = (indexes: added.0, startIndex: added.1.startIndex)
-        self.removed = (indexes: removed.0, startIndex: removed.1.startIndex)
+    fileprivate let _commonIndexSet: DiffIndexSet<Index>
+    fileprivate let _addedIndexSet: DiffIndexSet<Index>
+    fileprivate let _removedIndexSet: DiffIndexSet<Index>
+    
+    fileprivate init(commonIndexes: DiffIndexSet<Index>, addedIndexes: DiffIndexSet<Index>, removedIndexes: DiffIndexSet<Index>) {
+        self._commonIndexSet = commonIndexes
+        self._addedIndexSet = addedIndexes
+        self._removedIndexSet = removedIndexes
+    }
+    
+}
+
+/**
+ An extension of `Diff`, which adds support for `IndexSet`.
+ */
+public extension Diff where Index: Strideable, Index.Stride: SignedInteger {
+    
+    /// The indexes whose corresponding values in the old collection are in the LCS.
+    public var commonIndexSet: IndexSet {
+        return self._commonIndexSet.indexSet
+    }
+    
+    /// The indexes whose corresponding values in the new collection are not in the LCS.
+    public var addedIndexSet: IndexSet {
+        return self._addedIndexSet.indexSet
+    }
+    
+    /// The indexes whose corresponding values in the old collection are not in the LCS.
+    public var removedIndexSet: IndexSet {
+        return self._removedIndexSet.indexSet
+    }
+    
+}
+
+private struct DiffIndexSet<Index> {
+    
+    let startIndex: Index
+    let indexes: [Index]
+    
+    init(_ indexes: [Index], startIndex: Index) {
+        self.indexes = indexes
+        self.startIndex = startIndex
+    }
+    
+}
+
+private extension DiffIndexSet where Index: Strideable, Index.Stride: SignedInteger {
+    
+    var indexSet: IndexSet {
+        let indexes = self.indexes.map { Int((self.startIndex..<$0).count) }
+        
+        return IndexSet(indexes)
     }
     
 }
@@ -110,7 +156,9 @@ public extension Collection where Iterator.Element: Equatable {
             otherIndex = otherCollection.index(after: otherIndex)
         }
         
-        return Diff(common: (commonIndexes, self), added: (addedIndexes, otherCollection), removed: (removedIndexes, self))
+        return Diff(commonIndexes: DiffIndexSet(commonIndexes, startIndex: self.startIndex),
+                    addedIndexes: DiffIndexSet(addedIndexes, startIndex: otherCollection.startIndex),
+                    removedIndexes: DiffIndexSet(removedIndexes, startIndex: self.startIndex))
     }
     
     // MARK: Private functions

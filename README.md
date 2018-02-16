@@ -40,13 +40,13 @@ import PackageDescription
 
 let package = Package(
     dependencies: [
-        .Package(url: "https://github.com/Frugghi/SwiftLCS.git", majorVersion: 1, minor: 1)
+        .Package(url: "https://github.com/Frugghi/SwiftLCS.git", majorVersion: 1, minor: 3)
     ]
 )
 ```
 
 ### Manual
-Include `SwiftLCS.swift` and *optionally* `SwiftLCS+Foundation.swift` to your project.
+Include `SwiftLCS.swift` into your project.
 
 ## :book: Documentation
 The API documentation is available [here](http://cocoadocs.org/docsets/SwiftLCS/).

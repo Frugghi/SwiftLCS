@@ -9,20 +9,16 @@
 /* Begin PBXBuildFile section */
 		182E30D21BD4F44A008EC94E /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		182E30DD1BD4F46A008EC94E /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
-		182E30DE1BD4F46A008EC94E /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
 		182E30E11BD4F502008EC94E /* SwiftLCS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182E30CF1BD4F44A008EC94E /* SwiftLCS.framework */; };
 		1886DD141BCEC60900E67CD7 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886DD131BCEC60900E67CD7 /* StringTests.swift */; };
 		1886DD161BCEC7FB00E67CD7 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886DD151BCEC7FB00E67CD7 /* ArrayTests.swift */; };
 		1886DD181BCECA3000E67CD7 /* IndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886DD171BCECA3000E67CD7 /* IndexTests.swift */; };
 		18BCD0F61D8B71BA00B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18BCD0F71D8B71C600B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
-		18BCD0F81D8B71C600B6E4B5 /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
 		18BCD1081D8B73F800B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18BCD1091D8B740200B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
-		18BCD10A1D8B740200B6E4B5 /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
 		18BCD1191D8B757B00B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18BCD11A1D8B758200B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
-		18BCD11B1D8B758400B6E4B5 /* SwiftLCS+Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +38,6 @@
 		182E30D11BD4F44A008EC94E /* SwiftLCS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftLCS.h; sourceTree = "<group>"; };
 		182E30D31BD4F44A008EC94E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLCS.swift; sourceTree = "<group>"; };
-		182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftLCS+Foundation.swift"; sourceTree = "<group>"; };
 		1886DD131BCEC60900E67CD7 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		1886DD151BCEC7FB00E67CD7 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		1886DD171BCECA3000E67CD7 /* IndexTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexTests.swift; sourceTree = "<group>"; };
@@ -128,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */,
-				182E30DC1BD4F46A008EC94E /* SwiftLCS+Foundation.swift */,
 				18BCD10B1D8B740C00B6E4B5 /* Supporting Files */,
 			);
 			path = SwiftLCS;
@@ -381,7 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				182E30DD1BD4F46A008EC94E /* SwiftLCS.swift in Sources */,
-				182E30DE1BD4F46A008EC94E /* SwiftLCS+Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +383,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BCD0F71D8B71C600B6E4B5 /* SwiftLCS.swift in Sources */,
-				18BCD0F81D8B71C600B6E4B5 /* SwiftLCS+Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +391,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BCD1091D8B740200B6E4B5 /* SwiftLCS.swift in Sources */,
-				18BCD10A1D8B740200B6E4B5 /* SwiftLCS+Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +399,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BCD11A1D8B758200B6E4B5 /* SwiftLCS.swift in Sources */,
-				18BCD11B1D8B758400B6E4B5 /* SwiftLCS+Foundation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
