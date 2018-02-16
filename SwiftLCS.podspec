@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name             = 'SwiftLCS'
-  spec.version          = '1.3.0'
+  spec.version          = '1.3.1'
   spec.summary          = 'SwiftLCS is a Swift implementation of longest common subsequence (LCS) algorithm.'
   spec.homepage         = 'https://github.com/Frugghi/SwiftLCS'
   spec.license          = 'MIT'
@@ -9,7 +9,8 @@ Pod::Spec.new do |spec|
   spec.source           = { :git => 'https://github.com/Frugghi/SwiftLCS.git', :tag => spec.version.to_s }
 
   spec.requires_arc     = true
-  spec.default_subspec  = 'Foundation'
+  spec.swift_version    = '4.0'
+  spec.default_subspec  = 'Core'
 
   spec.ios.deployment_target = '8.0'
   spec.osx.deployment_target = '10.10'
@@ -20,9 +21,8 @@ Pod::Spec.new do |spec|
       core.source_files = 'SwiftLCS/SwiftLCS.swift'
   end
 
-  spec.subspec 'Foundation' do |foundation|
-      foundation.dependency	    'SwiftLCS/Core'
-      foundation.source_files = 'SwiftLCS/SwiftLCS+Foundation.swift'
-  end
+  #spec.test_spec do |test_spec|
+  #  test_spec.source_files = 'SwiftLCS Tests/*.swift'
+  #end
 
 end
