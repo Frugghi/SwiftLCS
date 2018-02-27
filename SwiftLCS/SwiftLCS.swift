@@ -215,7 +215,9 @@ public extension Collection where Iterator.Element: Equatable {
                 if self[index] == otherCollection[otherIndex] {
                     lengths[(i &+ 1) &* columns &+ j &+ 1] = lengths[i &* columns &+ j] &+ 1
                 } else {
-                    lengths[(i &+ 1) &* columns &+ j &+ 1] = Swift.max(lengths[(i &+ 1) &* columns &+ j], lengths[i &* columns &+ j &+ 1])
+                    let lhs = lengths[(i &+ 1) &* columns &+ j]
+                    let rhs = lengths[i &* columns &+ j &+ 1]
+                    lengths[(i &+ 1) &* columns &+ j &+ 1] = Swift.max(lhs, rhs)
                 }
                 
                 otherIndex = otherCollection.index(after: otherIndex)
