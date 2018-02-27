@@ -94,5 +94,17 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(old.longestCommonSubsequence(new), [1, 2, 3])
         XCTAssertEqual(new.longestCommonSubsequence(old), [1, 2, 3])
     }
+    
+    func testAppend() {
+        let old = [1, 2, 3, 4, 5, 6, 7]
+        let new = old + [8, 9, 10, 11]
+        XCTAssertEqual(old.longestCommonSubsequence(new), [1, 2, 3, 4, 5, 6, 7])
+    }
+    
+    func testPrependAndAppend() {
+        let old = [1, 2, 3, 4, 5, 6, 7]
+        let new = [0] + old + [8, 9, 10, 11]
+        XCTAssertEqual(old.longestCommonSubsequence(new), [1, 2, 3, 4, 5, 6, 7])
+    }
 
 }

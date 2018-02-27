@@ -19,6 +19,8 @@
 		18BCD1091D8B740200B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
 		18BCD1191D8B757B00B6E4B5 /* SwiftLCS.h in Headers */ = {isa = PBXBuildFile; fileRef = 182E30D11BD4F44A008EC94E /* SwiftLCS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18BCD11A1D8B758200B6E4B5 /* SwiftLCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E30DB1BD4F46A008EC94E /* SwiftLCS.swift */; };
+		7D4B06042044EA7600C02F0E /* BenchmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B06032044EA7600C02F0E /* BenchmarkTests.swift */; };
+		7D4B06092044F85400C02F0E /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4B06082044F85400C02F0E /* LinkedListTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		18BCD0FE1D8B72F400B6E4B5 /* SwiftLCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BCD1061D8B73E000B6E4B5 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		18BCD1111D8B752200B6E4B5 /* SwiftLCS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLCS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4B06032044EA7600C02F0E /* BenchmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchmarkTests.swift; sourceTree = "<group>"; };
+		7D4B06082044F85400C02F0E /* LinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				1886DD131BCEC60900E67CD7 /* StringTests.swift */,
 				1886DD151BCEC7FB00E67CD7 /* ArrayTests.swift */,
 				1886DD171BCECA3000E67CD7 /* IndexTests.swift */,
+				7D4B06032044EA7600C02F0E /* BenchmarkTests.swift */,
+				7D4B06082044F85400C02F0E /* LinkedListTests.swift */,
 				1804B66C1BCDE58000BD250F /* Info.plist */,
 			);
 			path = "SwiftLCS Tests";
@@ -365,6 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1886DD161BCEC7FB00E67CD7 /* ArrayTests.swift in Sources */,
+				7D4B06092044F85400C02F0E /* LinkedListTests.swift in Sources */,
+				7D4B06042044EA7600C02F0E /* BenchmarkTests.swift in Sources */,
 				1886DD141BCEC60900E67CD7 /* StringTests.swift in Sources */,
 				1886DD181BCECA3000E67CD7 /* IndexTests.swift in Sources */,
 			);
