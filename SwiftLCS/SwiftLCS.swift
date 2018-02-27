@@ -120,10 +120,11 @@ public extension Collection where Iterator.Element: Equatable {
     - returns: The diff between the receiver and the given collection.
     */
     public func diff(_ otherCollection: Self) -> Diff<Index> {
-        let (suffix, suffixIndexes) = self.suffix(otherCollection)
-        let (_, prefixIndexes) = self.prefix(otherCollection, suffixLength: suffixIndexes.count)
+        let count = self.count
+        let (suffix, suffixIndexes) = self.suffix(otherCollection, count: count)
+        let (prefix, prefixIndexes) = self.prefix(otherCollection, count: count, suffix: suffix)
 
-        let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, endIndex: suffix, prefixLength: prefixIndexes.count, suffixLength: suffixIndexes.count) + suffixIndexes
+        let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, prefixLength: prefix, suffixLength: suffix, count: count) + suffixIndexes
 
         var removedIndexes: [Index] = []
         var addedIndexes: [Index] = []
@@ -163,66 +164,83 @@ public extension Collection where Iterator.Element: Equatable {
     
     // MARK: Private functions
     
-    private func prefix(_ otherCollection: Self, suffixLength: Int) -> (Index, [Index]) {
-        var iterator = (self.dropLast(suffixLength).makeIterator(), otherCollection.dropLast(suffixLength).makeIterator())
+    private func prefix(_ otherCollection: Self, count: IndexDistance, suffix: IndexDistance) -> (IndexDistance, [Index]) {
+        var iterator = (self.makeIterator(), otherCollection.makeIterator())
         var entry = (iterator.0.next(), iterator.1.next())
         
         var prefixIndexes: [Index] = []
         var prefix = self.startIndex
-        while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
+        let endIndex = self.index(self.startIndex, offsetBy: count - suffix)
+        while let lhs = entry.0, let rhs = entry.1, lhs == rhs, prefix < endIndex {
             prefixIndexes.append(prefix)
             prefix = self.index(after: prefix)
             
             entry = (iterator.0.next(), iterator.1.next())
         }
         
-        return (prefix, prefixIndexes)
+        return (self.distance(from: self.startIndex, to: prefix), prefixIndexes)
     }
     
-    private func suffix(_ otherCollection: Self) -> (Index, [Index]) {
+    private func suffix(_ otherCollection: Self, count: IndexDistance) -> (IndexDistance, [Index]) {
         var iterator = (self.reversed().makeIterator(), otherCollection.reversed().makeIterator())
         var entry = (iterator.0.next(), iterator.1.next())
         
         var suffixIndexes: [Index] = []
-        var suffix = self.endIndex
+        var offset = count
+        var suffix = self.index(self.startIndex, offsetBy: offset)
         while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
-            suffix = self.index(suffix, offsetBy: -1)
+            offset -= 1
+            suffix = self.index(self.startIndex, offsetBy: offset)
             suffixIndexes.append(suffix)
             
             entry = (iterator.0.next(), iterator.1.next())
         }
         
-        return (suffix, suffixIndexes.reversed())
+        return (self.distance(from: suffix, to: self.endIndex), suffixIndexes.reversed())
     }
     
-    private func computeLCS(_ otherCollection: Self, endIndex: Index, prefixLength: Int, suffixLength: Int) -> [Index] {
-        let rows = Int(Int64(self.count)) - prefixLength - suffixLength + 1
-        let columns = Int(Int64(otherCollection.count)) - prefixLength - suffixLength + 1
-        var lengths = Array(repeating: Array(repeating: 0, count: columns), count: rows)
-        for (i, element) in self.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
-            for (j, otherElement) in otherCollection.enumerated().dropFirst(prefixLength).dropLast(suffixLength).map({($0.0 - prefixLength, $0.1)}) {
-                if element == otherElement {
-                    lengths[i+1][j+1] = lengths[i][j] + 1
+    private func computeLCS(_ otherCollection: Self, prefixLength: IndexDistance, suffixLength: IndexDistance, count: IndexDistance) -> [Index] {
+        let rows = Int(count - prefixLength - suffixLength) + 1
+        let columns = Int(otherCollection.count - prefixLength - suffixLength) + 1
+        
+        guard rows > 1 && columns > 1 else {
+            return []
+        }
+        
+        var lengths = Array(repeating: 0, count: rows * columns)
+        var index = self.index(self.startIndex, offsetBy: IndexDistance(prefixLength))
+        for i in 0..<rows-1 {
+            var otherIndex = otherCollection.index(otherCollection.startIndex, offsetBy: IndexDistance(prefixLength))
+            for j in 0..<columns-1 {
+                if self[index] == otherCollection[otherIndex] {
+                    lengths[(i &+ 1) &* columns &+ j &+ 1] = lengths[i &* columns &+ j] &+ 1
                 } else {
-                    lengths[i+1][j+1] = Swift.max(lengths[i+1][j], lengths[i][j+1])
+                    lengths[(i &+ 1) &* columns &+ j &+ 1] = Swift.max(lengths[(i &+ 1) &* columns &+ j], lengths[i &* columns &+ j &+ 1])
                 }
+                
+                otherIndex = otherCollection.index(after: otherIndex)
             }
+            
+            index = self.index(after: index)
         }
         
         var commonIndexes: [Index] = []
         
-        var index = endIndex
-        var (i, j) = (rows - 1, columns - 1)
+        var indexOffset = count - IndexDistance(suffixLength)
+        index = self.index(self.startIndex, offsetBy: indexOffset)
+        var (i, j) = (rows &- 1, columns &- 1)
         while i != 0 && j != 0 {
-            if lengths[i][j] == lengths[i - 1][j] {
-                i -= 1
-                index = self.index(index, offsetBy: -1)
-            } else if lengths[i][j] == lengths[i][j - 1] {
-                j -= 1
+            if lengths[i &* columns &+ j] == lengths[(i &- 1) &* columns &+ j] {
+                i = i &- 1
+                indexOffset -= 1
+                index = self.index(self.startIndex, offsetBy: indexOffset)
+            } else if lengths[i &* columns &+ j] == lengths[i &* columns &+ j &- 1] {
+                j = j &- 1
             } else {
-                index = self.index(index, offsetBy: -1)
+                indexOffset -= 1
+                index = self.index(self.startIndex, offsetBy: indexOffset)
                 commonIndexes.append(index)
-                (i, j) = (i - 1, j - 1)
+                (i, j) = (i &- 1, j &- 1)
             }
         }
         
