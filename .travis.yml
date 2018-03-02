@@ -56,5 +56,6 @@ deploy:
   keep-history: false
   local-dir: docs/
   on:
-    branch: gh-pages
+    branch: master
+    target-branch: gh-pages
     condition: "$GENERATE_DOC = YES"
