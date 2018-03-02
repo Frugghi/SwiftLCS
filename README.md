@@ -1,6 +1,5 @@
 # SwiftLCS
 [![Build Status](https://travis-ci.org/Frugghi/SwiftLCS.svg?branch=master)](https://travis-ci.org/Frugghi/SwiftLCS)
-[![Pod documentation](https://img.shields.io/cocoapods/metrics/doc-percent/SwiftLCS.svg)](http://cocoadocs.org/docsets/SwiftLCS/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Pods](https://img.shields.io/cocoapods/v/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS)
 [![Pod platforms](https://img.shields.io/cocoapods/p/SwiftLCS.svg)](https://cocoapods.org/pods/SwiftLCS)
@@ -49,7 +48,7 @@ let package = Package(
 Include `SwiftLCS.swift` into your project.
 
 ## :book: Documentation
-The API documentation is available [here](http://cocoadocs.org/docsets/SwiftLCS/).
+The API documentation is available [here](https://frugghi.github.io/SwiftLCS/).
 
 ## :computer: Usage
 Import the framework:
