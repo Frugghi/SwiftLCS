@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name             = 'SwiftLCS'
-  spec.version          = '1.3.1'
+  spec.version          = '1.3.2'
   spec.summary          = 'SwiftLCS is a Swift implementation of longest common subsequence (LCS) algorithm.'
   spec.homepage         = 'https://github.com/Frugghi/SwiftLCS'
   spec.license          = 'MIT'
