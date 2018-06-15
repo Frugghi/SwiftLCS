@@ -53,4 +53,12 @@ class BenchmarkTests: XCTestCase {
         }
     }
     
+    func testBenchmark2000() {
+        let old: [Int] = (0...2000).map({ _ in Int(arc4random_uniform(1000)) })
+        let new: [Int] = (0...2000).map({ _ in Int(arc4random_uniform(1000)) })
+        measure {
+            let _ = old.longestCommonSubsequence(new)
+        }
+    }
+    
 }

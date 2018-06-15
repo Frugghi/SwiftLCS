@@ -121,12 +121,11 @@ public extension Collection where Iterator.Element: Equatable {
     */
     public func diff(_ otherCollection: Self) -> Diff<Index> {
         let count = self.count
-        let (suffix, suffixIndexes) = self.suffix(otherCollection, count: count)
-        let (prefix, prefixIndexes) = self.prefix(otherCollection, count: count, suffix: suffix)
-
-        let commonIndexes = prefixIndexes + self.computeLCS(otherCollection, prefixLength: prefix, suffixLength: suffix, count: count) + suffixIndexes
+        let commonIndexes = self.longestCommonSubsequence(otherCollection, selfCount: count)
 
         var removedIndexes: [Index] = []
+        removedIndexes.reserveCapacity(count - commonIndexes.count)
+        
         var addedIndexes: [Index] = []
         
         var index = self.startIndex
@@ -164,42 +163,36 @@ public extension Collection where Iterator.Element: Equatable {
     
     // MARK: Private functions
     
-    private func prefix(_ otherCollection: Self, count: IndexDistance, suffix: IndexDistance) -> (IndexDistance, [Index]) {
-        var iterator = (self.makeIterator(), otherCollection.makeIterator())
-        var entry = (iterator.0.next(), iterator.1.next())
+    private func prefix(_ otherCollection: Self, count: Int, suffix: Int) -> (Int, [Index]) {
+        var iterator = self.makeIterator()
+        var otherIterator = otherCollection.makeIterator()
         
-        var prefixIndexes: [Index] = []
         var prefix = self.startIndex
         let endIndex = self.index(self.startIndex, offsetBy: count - suffix)
-        while let lhs = entry.0, let rhs = entry.1, lhs == rhs, prefix < endIndex {
-            prefixIndexes.append(prefix)
+        while let lhs = iterator.next(), let rhs = otherIterator.next(), lhs == rhs, prefix < endIndex {
             prefix = self.index(after: prefix)
-            
-            entry = (iterator.0.next(), iterator.1.next())
         }
         
-        return (self.distance(from: self.startIndex, to: prefix), prefixIndexes)
+        let prefixLength = self.distance(from: self.startIndex, to: prefix)
+        return (prefixLength, Array(self.indices.prefix(prefixLength)))
     }
     
-    private func suffix(_ otherCollection: Self, count: IndexDistance) -> (IndexDistance, [Index]) {
-        var iterator = (self.reversed().makeIterator(), otherCollection.reversed().makeIterator())
-        var entry = (iterator.0.next(), iterator.1.next())
+    private func suffix(_ otherCollection: Self, count: Int) -> (Int, [Index]) {
+        var iterator = self.reversed().makeIterator()
+        var otherIterator = otherCollection.reversed().makeIterator()
         
-        var suffixIndexes: [Index] = []
         var offset = count
         var suffix = self.index(self.startIndex, offsetBy: offset)
-        while let lhs = entry.0, let rhs = entry.1, lhs == rhs {
+        while let lhs = iterator.next(), let rhs = otherIterator.next(), lhs == rhs {
             offset -= 1
             suffix = self.index(self.startIndex, offsetBy: offset)
-            suffixIndexes.append(suffix)
-            
-            entry = (iterator.0.next(), iterator.1.next())
         }
         
-        return (self.distance(from: suffix, to: self.endIndex), suffixIndexes.reversed())
+        let suffixLength = self.distance(from: suffix, to: self.endIndex)
+        return (suffixLength, Array(self.indices.suffix(suffixLength)))
     }
     
-    private func computeLCS(_ otherCollection: Self, prefixLength: IndexDistance, suffixLength: IndexDistance, count: IndexDistance) -> [Index] {
+    private func computeLCS(_ otherCollection: Self, prefixLength: Int, suffixLength: Int, count: Int) -> [Index] {
         let rows = Int(count - prefixLength - suffixLength) + 1
         let columns = Int(otherCollection.count - prefixLength - suffixLength) + 1
         
@@ -208,9 +201,9 @@ public extension Collection where Iterator.Element: Equatable {
         }
         
         var lengths = Array(repeating: 0, count: rows * columns)
-        var index = self.index(self.startIndex, offsetBy: IndexDistance(prefixLength))
+        var index = self.index(self.startIndex, offsetBy: prefixLength)
         for i in 0..<rows-1 {
-            var otherIndex = otherCollection.index(otherCollection.startIndex, offsetBy: IndexDistance(prefixLength))
+            var otherIndex = otherCollection.index(otherCollection.startIndex, offsetBy: prefixLength)
             for j in 0..<columns-1 {
                 if self[index] == otherCollection[otherIndex] {
                     lengths[(i &+ 1) &* columns &+ j &+ 1] = lengths[i &* columns &+ j] &+ 1
@@ -228,7 +221,7 @@ public extension Collection where Iterator.Element: Equatable {
         
         var commonIndexes: [Index] = []
         
-        var indexOffset = count - IndexDistance(suffixLength)
+        var indexOffset = count - suffixLength
         index = self.index(self.startIndex, offsetBy: indexOffset)
         var (i, j) = (rows &- 1, columns &- 1)
         while i != 0 && j != 0 {
@@ -248,6 +241,13 @@ public extension Collection where Iterator.Element: Equatable {
         
         return commonIndexes.reversed()
     }
+    
+    fileprivate func longestCommonSubsequence(_ otherCollection: Self, selfCount count: Int) -> [Index] {
+        let (suffix, suffixIndexes) = self.suffix(otherCollection, count: count)
+        let (prefix, prefixIndexes) = self.prefix(otherCollection, count: count, suffix: suffix)
+        
+        return prefixIndexes + self.computeLCS(otherCollection, prefixLength: prefix, suffixLength: suffix, count: count) + suffixIndexes
+    }
 
 }
 
@@ -265,7 +265,7 @@ public extension RangeReplaceableCollection where Iterator.Element: Equatable {
     - returns: The longest common subsequence between the receiver and the given collection.
     */
     public func longestCommonSubsequence(_ collection: Self) -> Self {
-        return Self(self.diff(collection).commonIndexes.map { self[$0] })
+        return Self(self.longestCommonSubsequence(collection, selfCount: self.count).map { self[$0] })
     }
 
 }
