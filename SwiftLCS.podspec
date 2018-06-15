@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.source           = { :git => 'https://github.com/Frugghi/SwiftLCS.git', :tag => spec.version.to_s }
 
   spec.requires_arc     = true
-  spec.swift_version    = '4.0'
+  spec.swift_version    = '4.1'
   spec.default_subspec  = 'Core'
 
   spec.ios.deployment_target = '8.0'
