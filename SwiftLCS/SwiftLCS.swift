@@ -184,7 +184,7 @@ public extension Collection where Element: Equatable {
         var offset = count
         var suffix = self.index(self.startIndex, offsetBy: offset)
         while let lhs = iterator.next(), let rhs = otherIterator.next(), lhs == rhs {
-            offset -= 1
+            offset &-= 1
             suffix = self.index(self.startIndex, offsetBy: offset)
         }
         
@@ -202,9 +202,9 @@ public extension Collection where Element: Equatable {
         
         var lengths = Array(repeating: 0, count: rows * columns)
         var index = self.index(self.startIndex, offsetBy: prefixLength)
-        for i in 0..<rows-1 {
+        for i in 0..<rows &- 1 {
             var otherIndex = otherCollection.index(otherCollection.startIndex, offsetBy: prefixLength)
-            for j in 0..<columns-1 {
+            for j in 0..<columns &- 1 {
                 if self[index] == otherCollection[otherIndex] {
                     lengths[(i &+ 1) &* columns &+ j &+ 1] = lengths[i &* columns &+ j] &+ 1
                 } else {
@@ -227,11 +227,12 @@ public extension Collection where Element: Equatable {
         while i != 0 && j != 0 {
             if lengths[i &* columns &+ j] == lengths[(i &- 1) &* columns &+ j] {
                 i = i &- 1
+                indexOffset &-= 1
                 index = self.index(self.startIndex, offsetBy: indexOffset)
             } else if lengths[i &* columns &+ j] == lengths[i &* columns &+ j &- 1] {
                 j = j &- 1
             } else {
-                indexOffset -= 1
+                indexOffset &-= 1
                 index = self.index(self.startIndex, offsetBy: indexOffset)
                 commonIndexes.append(index)
                 (i, j) = (i &- 1, j &- 1)
