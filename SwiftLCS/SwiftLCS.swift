@@ -45,7 +45,7 @@ public struct Diff<Index> {
     }
     
     /// Construct the `Diff` between two given collections.
-    public init<C: Collection>(_ old: C, _ new: C) where C.Index == Index, C.Iterator.Element: Equatable {
+    public init<C: Collection>(_ old: C, _ new: C) where C.Index == Index, C.Element: Equatable {
         self = old.diff(new)
     }
     
@@ -110,7 +110,7 @@ private extension DiffIndexSet where Index: Strideable, Index.Stride: SignedInte
 /**
 An extension of `Collection`, which calculates the diff between two collections.
 */
-public extension Collection where Iterator.Element: Equatable {
+public extension Collection where Element: Equatable {
 
     /**
     Returns the diff between two collections.
@@ -227,7 +227,6 @@ public extension Collection where Iterator.Element: Equatable {
         while i != 0 && j != 0 {
             if lengths[i &* columns &+ j] == lengths[(i &- 1) &* columns &+ j] {
                 i = i &- 1
-                indexOffset -= 1
                 index = self.index(self.startIndex, offsetBy: indexOffset)
             } else if lengths[i &* columns &+ j] == lengths[i &* columns &+ j &- 1] {
                 j = j &- 1
@@ -256,7 +255,7 @@ public extension Collection where Iterator.Element: Equatable {
 /**
 An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
 */
-public extension RangeReplaceableCollection where Iterator.Element: Equatable {
+public extension RangeReplaceableCollection where Element: Equatable {
 
     /**
     Returns the longest common subsequence between two collections.
