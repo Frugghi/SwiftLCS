@@ -132,7 +132,8 @@
 				18BCD1311D8B7DBE00B6E4B5 /* LaunchScreen.storyboard */,
 				18BCD1341D8B7DBE00B6E4B5 /* Info.plist */,
 			);
-			path = "SwiftLCS Example";
+			name = "SwiftLCS Example";
+			path = "Source/SwiftLCS Example";
 			sourceTree = "<group>";
 		};
 		18BCD1411D8B7E6C00B6E4B5 /* Products */ = {
@@ -423,7 +424,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "SwiftLCS Example/Info.plist";
+				INFOPLIST_FILE = "Source/SwiftLCS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tommasomadonia.SwiftLCS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,7 +437,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "SwiftLCS Example/Info.plist";
+				INFOPLIST_FILE = "Source/SwiftLCS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tommasomadonia.SwiftLCS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
