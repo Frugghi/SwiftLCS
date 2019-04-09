@@ -67,17 +67,17 @@ public struct Diff<Index> {
 public extension Diff where Index: Strideable, Index.Stride: SignedInteger {
     
     /// The indexes whose corresponding values in the old collection are in the LCS.
-    public var commonIndexSet: IndexSet {
+    var commonIndexSet: IndexSet {
         return self._commonIndexSet.indexSet
     }
     
     /// The indexes whose corresponding values in the new collection are not in the LCS.
-    public var addedIndexSet: IndexSet {
+    var addedIndexSet: IndexSet {
         return self._addedIndexSet.indexSet
     }
     
     /// The indexes whose corresponding values in the old collection are not in the LCS.
-    public var removedIndexSet: IndexSet {
+    var removedIndexSet: IndexSet {
         return self._removedIndexSet.indexSet
     }
     
@@ -119,7 +119,7 @@ public extension Collection where Element: Equatable {
     - parameter collection: The collection with which to compare the receiver.
     - returns: The diff between the receiver and the given collection.
     */
-    public func diff(_ otherCollection: Self) -> Diff<Index> {
+    func diff(_ otherCollection: Self) -> Diff<Index> {
         let count = self.count
         let commonIndexes = self.longestCommonSubsequence(otherCollection, selfCount: count)
 
@@ -264,7 +264,7 @@ public extension RangeReplaceableCollection where Element: Equatable {
     - parameter collection: The collection with which to compare the receiver.
     - returns: The longest common subsequence between the receiver and the given collection.
     */
-    public func longestCommonSubsequence(_ collection: Self) -> Self {
+    func longestCommonSubsequence(_ collection: Self) -> Self {
         return Self(self.longestCommonSubsequence(collection, selfCount: self.count).map { self[$0] })
     }
 
