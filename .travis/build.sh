@@ -7,6 +7,7 @@ function build_osx {
 }
 
 function build_linux {
+  swiftenv version
   swift build --configuration "$1"
 }
 
