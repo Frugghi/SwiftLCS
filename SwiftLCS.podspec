@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.source           = { :git => 'https://github.com/Frugghi/SwiftLCS.git', :tag => spec.version.to_s }
 
   spec.requires_arc     = true
-  spec.swift_version    = '4.1'
+  spec.swift_versions   = ['4.2', '5.0']
   spec.default_subspec  = 'Core'
 
   spec.ios.deployment_target = '8.0'
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '2.0'
 
   spec.subspec 'Core' do |core|
-      core.source_files = 'SwiftLCS/SwiftLCS.swift'
+      core.source_files = 'Source/SwiftLCS/SwiftLCS.swift'
   end
 
   #spec.test_spec do |test_spec|
