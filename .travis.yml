@@ -12,10 +12,10 @@ env:
   - OSX_FRAMEWORK_SCHEME="SwiftLCS OSX"
   - TVOS_FRAMEWORK_SCHEME="SwiftLCS tvOS"
   - WATCHOS_FRAMEWORK_SCHEME="SwiftLCS watchOS"
-  - IOS_SDK=iphonesimulator12.0
+  - IOS_SDK=iphonesimulator12.2
   - OSX_SDK=macosx10.14
-  - TVOS_SDK=appletvsimulator12.0
-  - WATCHOS_SDK=watchsimulator5.0
+  - TVOS_SDK=appletvsimulator12.2
+  - WATCHOS_SDK=watchsimulator5.2
   - EXAMPLE_SCHEME="SwiftLCS Example"
   - PODSPEC_PATH="SwiftLCS.podspec"
   - SWIFTENV_ROOT="$HOME/.swiftenv"
