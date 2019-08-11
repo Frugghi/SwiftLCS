@@ -24,9 +24,7 @@
 
 import Foundation
 
-/**
-A generic struct that represents a diff between two collections.
-*/
+/// A generic struct that represents a diff between two collections.
 public struct Diff<Index> {
     
     /// The indexes whose corresponding values in the old collection are in the LCS.
@@ -61,9 +59,7 @@ public struct Diff<Index> {
     
 }
 
-/**
- An extension of `Diff`, which adds support for `IndexSet`.
- */
+/// An extension of `Diff`, which adds support for `IndexSet`.
 public extension Diff where Index: Strideable, Index.Stride: SignedInteger {
     
     /// The indexes whose corresponding values in the old collection are in the LCS.
@@ -98,33 +94,28 @@ private struct DiffIndexSet<Index> {
 private extension DiffIndexSet where Index: Strideable, Index.Stride: SignedInteger {
     
     var indexSet: IndexSet {
-        let indexes = self.indexes.map { Int((self.startIndex..<$0).count) }
+        let indexes = self.indexes.map { Int(self.startIndex.distance(to: $0)) }
         
         return IndexSet(indexes)
     }
     
 }
 
-// MARK: -
+// MARK: - Collection -
 
-/**
-An extension of `Collection`, which calculates the diff between two collections.
-*/
-public extension Collection where Element: Equatable {
+/// An extension of `Collection`, which calculates the diff between two collections.
+public extension Collection {
 
-    /**
-    Returns the diff between two collections.
-    
-    - complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
-    - parameter collection: The collection with which to compare the receiver.
-    - returns: The diff between the receiver and the given collection.
-    */
-    func diff(_ otherCollection: Self) -> Diff<Index> {
-        let count = self.count
-        let commonIndexes = self.longestCommonSubsequence(otherCollection, selfCount: count)
+    /// Returns the diff between two collections.
+    ///
+    /// - Complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
+    /// - Parameter otherCollection: The collection with which to compare the receiver.
+    /// - Returns: The diff between the receiver and the given collection.
+    func diff(_ otherCollection: Self, by areEquivalent: (Element, Element) -> Bool) -> Diff<Index> {
+        let commonIndexes = self.longestCommonSubsequence(otherCollection, by: areEquivalent)
 
         var removedIndexes: [Index] = []
-        removedIndexes.reserveCapacity(count - commonIndexes.count)
+        removedIndexes.reserveCapacity(self.count - commonIndexes.count)
         
         var addedIndexes: [Index] = []
         
@@ -136,7 +127,7 @@ public extension Collection where Element: Equatable {
             if commonIndex == index {
                 commonIndex = commonIndexesIterator.next()
                 
-                while otherIndex != otherCollection.endIndex && otherCollection[otherIndex] != self[index] {
+                while otherIndex != otherCollection.endIndex && !areEquivalent(otherCollection[otherIndex], self[index]) {
                     addedIndexes.append(otherIndex)
                     otherIndex = otherCollection.index(after: otherIndex)
                 }
@@ -160,16 +151,33 @@ public extension Collection where Element: Equatable {
                     addedIndexes: DiffIndexSet(addedIndexes, startIndex: otherCollection.startIndex),
                     removedIndexes: DiffIndexSet(removedIndexes, startIndex: self.startIndex))
     }
+
+}
+
+/// An extension of `Collection`, which calculates the diff between two collections.
+public extension Collection where Element: Equatable {
+
+    /// Returns the diff between two collections.
+    ///
+    /// - Complexity: O(mn) where `m` and `n` are the lengths of the receiver and the given collection.
+    /// - Parameters:
+    ///   - otherCollection: The collection with which to compare the receiver.
+    /// - Returns: The diff between the receiver and the given collection.
+    func diff(_ otherCollection: Self) -> Diff<Index> {
+        return self.diff(otherCollection, by: ==)
+    }
+
+}
+
+fileprivate extension Collection {
     
-    // MARK: Private functions
-    
-    private func prefix(_ otherCollection: Self, count: Int, suffix: Int) -> (Int, [Index]) {
+    func prefix(_ otherCollection: Self, count: Int, suffix: Int, by areEquivalent: (Element, Element) -> Bool) -> (Int, [Index]) {
         var iterator = self.makeIterator()
         var otherIterator = otherCollection.makeIterator()
         
         var prefix = self.startIndex
         let endIndex = self.index(self.startIndex, offsetBy: count - suffix)
-        while let lhs = iterator.next(), let rhs = otherIterator.next(), lhs == rhs, prefix < endIndex {
+        while let lhs = iterator.next(), let rhs = otherIterator.next(), prefix < endIndex && areEquivalent(lhs, rhs) {
             prefix = self.index(after: prefix)
         }
         
@@ -177,13 +185,13 @@ public extension Collection where Element: Equatable {
         return (prefixLength, Array(self.indices.prefix(prefixLength)))
     }
     
-    private func suffix(_ otherCollection: Self, count: Int) -> (Int, [Index]) {
+    func suffix(_ otherCollection: Self, count: Int, by areEquivalent: (Element, Element) -> Bool) -> (Int, [Index]) {
         var iterator = self.reversed().makeIterator()
         var otherIterator = otherCollection.reversed().makeIterator()
         
         var offset = count
         var suffix = self.index(self.startIndex, offsetBy: offset)
-        while let lhs = iterator.next(), let rhs = otherIterator.next(), lhs == rhs {
+        while let lhs = iterator.next(), let rhs = otherIterator.next(), areEquivalent(lhs, rhs) {
             offset &-= 1
             suffix = self.index(self.startIndex, offsetBy: offset)
         }
@@ -192,7 +200,7 @@ public extension Collection where Element: Equatable {
         return (suffixLength, Array(self.indices.suffix(suffixLength)))
     }
     
-    private func computeLCS(_ otherCollection: Self, prefixLength: Int, suffixLength: Int, count: Int) -> [Index] {
+    func computeLCS(_ otherCollection: Self, prefixLength: Int, suffixLength: Int, count: Int, by areEquivalent: (Element, Element) -> Bool) -> [Index] {
         let rows = Int(count - prefixLength - suffixLength) + 1
         let columns = Int(otherCollection.count - prefixLength - suffixLength) + 1
         
@@ -205,7 +213,7 @@ public extension Collection where Element: Equatable {
         for i in 0..<rows &- 1 {
             var otherIndex = otherCollection.index(otherCollection.startIndex, offsetBy: prefixLength)
             for j in 0..<columns &- 1 {
-                if self[index] == otherCollection[otherIndex] {
+                if areEquivalent(self[index], otherCollection[otherIndex]) {
                     lengths[(i &+ 1) &* columns &+ j &+ 1] = lengths[i &* columns &+ j] &+ 1
                 } else {
                     let lhs = lengths[(i &+ 1) &* columns &+ j]
@@ -242,30 +250,43 @@ public extension Collection where Element: Equatable {
         return commonIndexes.reversed()
     }
     
-    fileprivate func longestCommonSubsequence(_ otherCollection: Self, selfCount count: Int) -> [Index] {
-        let (suffix, suffixIndexes) = self.suffix(otherCollection, count: count)
-        let (prefix, prefixIndexes) = self.prefix(otherCollection, count: count, suffix: suffix)
+    func longestCommonSubsequence(_ otherCollection: Self, by areEquivalent: (Element, Element) -> Bool) -> [Index] {
+        let count = self.count
+        let (suffix, suffixIndexes) = self.suffix(otherCollection, count: count, by: areEquivalent)
+        let (prefix, prefixIndexes) = self.prefix(otherCollection, count: count, suffix: suffix, by: areEquivalent)
         
-        return prefixIndexes + self.computeLCS(otherCollection, prefixLength: prefix, suffixLength: suffix, count: count) + suffixIndexes
+        return prefixIndexes + self.computeLCS(otherCollection, prefixLength: prefix, suffixLength: suffix, count: count, by: areEquivalent) + suffixIndexes
     }
 
 }
 
-// MARK: -
+// MARK: - Range replaceable collection -
 
-/**
-An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
-*/
+/// An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
+public extension RangeReplaceableCollection {
+
+    /// Returns the longest common subsequence between two collections.
+    ///
+    /// - Parameters:
+    ///   - collection: The collection with which to compare the receiver.
+    ///   - areEquivalent: A closure that returns a Boolean value indicating whether two elements are equivalent.
+    /// - Returns: The longest common subsequence between the receiver and the given collection.
+    func longestCommonSubsequence(_ collection: Self, by areEquivalent: (Element, Element) -> Bool) -> Self {
+        return Self(self.longestCommonSubsequence(collection, by: areEquivalent).lazy.map { self[$0] })
+    }
+
+}
+
+/// An extension of `RangeReplaceableCollection`, which calculates the longest common subsequence between two collections.
 public extension RangeReplaceableCollection where Element: Equatable {
 
-    /**
-    Returns the longest common subsequence between two collections.
-    
-    - parameter collection: The collection with which to compare the receiver.
-    - returns: The longest common subsequence between the receiver and the given collection.
-    */
+    /// Returns the longest common subsequence between two collections.
+    ///
+    /// - Parameters:
+    ///   - collection: The collection with which to compare the receiver.
+    /// - Returns: The longest common subsequence between the receiver and the given collection.
     func longestCommonSubsequence(_ collection: Self) -> Self {
-        return Self(self.longestCommonSubsequence(collection, selfCount: self.count).map { self[$0] })
+        return Self(self.longestCommonSubsequence(collection, by: ==).lazy.map { self[$0] })
     }
 
 }
