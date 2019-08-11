@@ -1,0 +1,61 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/Frugghi/SwiftLCS/Source/SwiftLCS/SwiftLCS.swift",
+      "line": 94,
+      "symbol": "DiffIndexSet",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travis/build/Frugghi/SwiftLCS"
+}

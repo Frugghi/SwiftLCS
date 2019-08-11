@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Collection Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/Collection" class="dashAnchor"></a>
+    <a title="Collection Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SwiftLCS Docs</a> (94% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SwiftLCS Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Collection Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/RangeReplaceableCollection.html">RangeReplaceableCollection</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Diff.html">Diff</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Collection</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Collection</span></code></pre>
+
+                </div>
+              </div>
+            <p>An extension of <code>Collection</code>, which calculates the diff between two collections.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sl8SwiftLCSE4diff_2byAA4DiffVy5IndexQzGx_Sb7ElementQz_AJtXEtF"></a>
+                    <a name="//apple_ref/swift/Method/diff(_:by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sl8SwiftLCSE4diff_2byAA4DiffVy5IndexQzGx_Sb7ElementQz_AJtXEtF">diff(_:by:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the diff between two collections.</p>
+<div class="aside aside-complexity">
+    <p class="aside-title">Complexity</p>
+    O(mn) where <code>m</code> and <code>n</code> are the lengths of the receiver and the given collection.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">diff</span><span class="p">(</span><span class="n">_</span> <span class="nv">otherCollection</span><span class="p">:</span> <span class="k">Self</span><span class="p">,</span> <span class="n">by</span> <span class="nv">areEquivalent</span><span class="p">:</span> <span class="p">(</span><span class="kt">Element</span><span class="p">,</span> <span class="kt">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Diff.html">Diff</a></span><span class="o">&lt;</span><span class="kt">Index</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>otherCollection</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The collection with which to compare the receiver.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The diff between the receiver and the given collection.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sl8SwiftLCSSQ7ElementRpzrlE4diffyAA4DiffVy5IndexQzGxF"></a>
+                    <a name="//apple_ref/swift/Method/diff(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sl8SwiftLCSSQ7ElementRpzrlE4diffyAA4DiffVy5IndexQzGxF">diff(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the diff between two collections.</p>
+<div class="aside aside-complexity">
+    <p class="aside-title">Complexity</p>
+    O(mn) where <code>m</code> and <code>n</code> are the lengths of the receiver and the given collection.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">diff</span><span class="p">(</span><span class="n">_</span> <span class="nv">otherCollection</span><span class="p">:</span> <span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Diff.html">Diff</a></span><span class="o">&lt;</span><span class="kt">Index</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>otherCollection</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The collection with which to compare the receiver.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The diff between the receiver and the given collection.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/Frugghi/SwiftLCS" target="_blank" rel="external">Tommaso Madonia</a>. All rights reserved. (Last updated: 2019-08-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

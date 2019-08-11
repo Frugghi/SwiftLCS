@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SwiftLCS  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SwiftLCS  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SwiftLCS Docs</a> (94% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SwiftLCS Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SwiftLCS  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/RangeReplaceableCollection.html">RangeReplaceableCollection</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Diff.html">Diff</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='swiftlcs' class='heading'>SwiftLCS</h1>
+
+<p><a href="https://travis-ci.org/Frugghi/SwiftLCS"><img src="https://travis-ci.org/Frugghi/SwiftLCS.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://cocoapods.org/pods/SwiftLCS"><img src="https://img.shields.io/cocoapods/v/SwiftLCS.svg" alt="Pods"></a>
+<a href="https://cocoapods.org/pods/SwiftLCS"><img src="https://img.shields.io/cocoapods/p/SwiftLCS.svg" alt="Pod platforms"></a></p>
+
+<p>SwitLCS provides an extension of <code>Collection</code> that finds the indexes of the longest common subsequence with another collection.</p>
+
+<p>The <strong>longest common subsequence</strong> (LCS) problem is the problem of finding the longest subsequence common to all sequences in a set of sequences (often just two sequences). It differs from problems of finding common substrings: unlike substrings, subsequences are not required to occupy consecutive positions within the original sequences.</p>
+
+<p>The project is based on the Objective-C implementation of <a href="https://github.com/khanlou/NSArray-LongestCommonSubsequence">NSArray+LongestCommonSubsequence</a>.</p>
+<h2 id='package-installation' class='heading'>:package: Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p><a href="https://cocoapods.org">CocoaPods</a> is the dependency manager for Swift and Objective-C Cocoa projects. It has over ten thousand libraries and can help you scale your projects elegantly.</p>
+
+<p>Add this to your <em>Podfile</em>:</p>
+<pre class="highlight plaintext"><code>use_frameworks!
+
+pod 'SwiftLCS'
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> builds your dependencies and provides you with binary frameworks, but you retain full control over your project structure and setup.</p>
+
+<p>Add this to your <em>Cartfile</em>:</p>
+<pre class="highlight plaintext"><code>github "Frugghi/SwiftLCS"
+</code></pre>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.</p>
+
+<p>Add <code>SwiftLCS</code> to your <em>Package.swift</em> dependencies:</p>
+<pre class="highlight plaintext"><code>import PackageDescription
+
+let package = Package(
+    dependencies: [
+        .Package(url: "https://github.com/Frugghi/SwiftLCS.git", majorVersion: 1, minor: 3)
+    ]
+)
+</code></pre>
+<h3 id='manual' class='heading'>Manual</h3>
+
+<p>Include <code>SwiftLCS.swift</code> into your project.</p>
+<h2 id='book-documentation' class='heading'>:book: Documentation</h2>
+
+<p>The API documentation is available <a href="https://frugghi.github.io/SwiftLCS/">here</a>.</p>
+<h2 id='computer-usage' class='heading'>:computer: Usage</h2>
+
+<p>Import the framework:</p>
+<pre class="highlight plaintext"><code>import SwiftLCS
+</code></pre>
+<h3 id='string' class='heading'>String</h3>
+<pre class="highlight plaintext"><code>let x = "abracadabra"
+let y = "yabbadabbadoo"
+
+let z = x.longestCommonSubsequence(y) // abadaba
+</code></pre>
+<h3 id='array' class='heading'>Array</h3>
+<pre class="highlight plaintext"><code>let x = [1, 2, 3, 4, 5, 6, 7]
+let y = [8, 9, 2, 10, 4, 11, 6, 12]
+
+let z = x.longestCommonSubsequence(y) // [2, 4, 6]
+</code></pre>
+<h3 id='indexes' class='heading'>Indexes</h3>
+<pre class="highlight plaintext"><code>let x = [1, 2, 3, 4, 5, 6, 7]
+let y = [8, 9, 2, 10, 4, 11, 6, 12]
+
+let diff = x.diff(y)
+// diff.commonIndexes: [1, 3, 5]
+// diff.addedIndexes: [0, 1, 3, 5, 7]
+// diff.removedIndexes: [0, 2, 4, 6]
+</code></pre>
+<h2 id='warning-objective-c' class='heading'>:warning: Objective-C</h2>
+
+<p><a href="https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/ObjectComparison.html">Object comparison</a> of Objective-C objects is done through the <code>isEquals:</code> method, so be sure that the implementations is correct otherwise <code>SwiftLCS</code> will not return the correct indexes.</p>
+<h2 id='page_facing_up-license-a-href-https-raw-githubusercontent-com-frugghi-swiftlcs-master-license-img-src-https-img-shields-io-cocoapods-l-swiftlcs-svg-alt-license-a' class='heading'>:page_facing_up: License <a href="https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/SwiftLCS.svg" alt="LICENSE"></a></h2>
+
+<p><em>SwiftLCS</em> is released under the MIT license. See <a href="https://raw.githubusercontent.com/Frugghi/SwiftLCS/master/LICENSE">LICENSE</a> for details.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/Frugghi/SwiftLCS" target="_blank" rel="external">Tommaso Madonia</a>. All rights reserved. (Last updated: 2019-08-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
